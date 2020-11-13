@@ -56,7 +56,9 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   NameRetriever nr = NameRetriever();
   String names = '';
-  int nameCount = 6;
+  int nameCount = 1;
+  bool surname = false;
+  List<String> lastNames = [];
 
   void _incrementCounter() {
     setState(() {
@@ -71,7 +73,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _newNamePress() async {
     print('button hit');
-    var nameData = await nr.getRandomNames('f', 'fre', nameCount, false);
+    var nameData = await nr.getRandomNames('', 'anci', nameCount, surname);
+    print('running lastNames');
+    var ln = await _lastName();
+    lastNames.add(ln);
     print('sending to newName');
     _newName(nameData);
   }
@@ -84,14 +89,30 @@ class _MyHomePageState extends State<MyHomePage> {
         names = 'oops!';
         return;
       }
+      // TODO: adjust this so that 6 cap is worked around
       for (int i = 0; i < nameCount - 1; i++) {
-        String name = nameData['names'][i];
+        String lastname = lastNames[i];
+        String name = nameData['names'][i] + '$lastname';
         print(name);
         names += '$name, ';
       }
       print(nameData['names'][nameCount - 1]);
-      names += nameData['names'][nameCount - 1];
+      names +=
+          nameData['names'][nameCount - 1] + ' ' + lastNames[nameCount - 1];
     });
+  }
+
+  Future<dynamic> _lastName() async {
+    var ln = await nr.getLastName('fre');
+    String lastName = ln['names'][1];
+    print(lastName);
+    return lastName;
+  }
+
+  Future<dynamic> _lastNames() async {
+    for (int i = 0; i < nameCount - 1; i++) {
+      lastNames.add(await _lastName());
+    }
   }
 
   @override
