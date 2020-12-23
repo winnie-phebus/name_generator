@@ -53,10 +53,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
   NameRetriever nr = NameRetriever();
   String names = '';
-  int nameCount = 1;
+  int nameCount = 3;
+  double sliderVal = 12.0;
+  double numberCap = 12.0;
   bool surname = false;
   List<String> lastNames = [];
 
@@ -73,32 +74,61 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _newNamePress() async {
     print('button hit');
-    var nameData = await nr.getRandomNames('', 'anci', nameCount, surname);
-    print('running lastNames');
-    var ln = await _lastName();
-    lastNames.add(ln);
+    var nameArr;
+    if (nameCount < 6) {
+      nameArr = nameDataToString(
+          await nr.getRandomNames('', 'anci', nameCount, surname), nameCount);
+    } else {
+      nameArr =
+          nameDataToString(await nr.getRandomNames('', 'anci', 6, surname), 6);
+      for (int i = 1; i < nameCount / 6; i++) {
+        var currentBatch = await nr.getRandomNames('', 'anci', 6, surname);
+        nameArr += nameDataToString(currentBatch, 6);
+      }
+
+      int remainder = nameCount % 6;
+      for (int i = 0; i < remainder; i++) {
+        var currentBatch =
+            await nr.getRandomNames('', 'anci', remainder, surname);
+        nameArr += nameDataToString(currentBatch, remainder);
+      }
+    }
+    //print('running lastNames');
+    //var ln = await _lastName();
+    //lastNames.add(ln);
     print('sending to newName');
-    _newName(nameData);
+    _newName(nameArr);
   }
 
-  void _newName(dynamic nameData) {
+  List nameDataToString(dynamic nameData, int length) {
+    var generatedNames = new List(length);
+    for (int i = 0; i < length; i++) {
+      generatedNames[i] = nameData['names'][i];
+    }
+    return generatedNames;
+  }
+
+  void _newName(List nameArr) {
     print('Method called');
     names = '';
     setState(() {
-      if (nameData == null) {
+      if (nameArr == null) {
         names = 'oops!';
         return;
       }
       // TODO: adjust this so that 6 cap is worked around
       for (int i = 0; i < nameCount - 1; i++) {
-        String lastname = lastNames[i];
-        String name = nameData['names'][i] + '$lastname';
+        //String lastname = lastNames[i];
+        String name = nameArr[i] + '';
         print(name);
         names += '$name, ';
       }
-      print(nameData['names'][nameCount - 1]);
-      names +=
-          nameData['names'][nameCount - 1] + ' ' + lastNames[nameCount - 1];
+      //print(names);
+      String finalName = nameArr[nameArr.length - 1];
+      print(finalName);
+      names += finalName;
+      //names +=
+      // nameData['names'][nameCount - 1] + ' ' + lastNames[nameCount - 1];
     });
   }
 
@@ -153,15 +183,33 @@ class _MyHomePageState extends State<MyHomePage> {
               'You have pushed the button this many times:',
             ),
             Text(
-              '$names',
+              'The names are: $names',
               style: Theme.of(context).textTheme.headline4,
+            ),
+            Slider(
+              value: sliderVal,
+              onChanged: (double v) {
+                setState(() {
+                  sliderVal = v;
+                });
+              },
+              onChangeEnd: (double) {
+                setState(() {
+                  nameCount = sliderVal.round();
+                  print(nameCount);
+                });
+              },
+              divisions: numberCap.round(),
+              label: sliderVal.round().toString() + " names",
+              min: 1.0,
+              max: numberCap,
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _newNamePress,
-        tooltip: 'Increment',
+        tooltip: 'New Names',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
