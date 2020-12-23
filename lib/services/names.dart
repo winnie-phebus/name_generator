@@ -11,7 +11,7 @@ class NameRetriever {
         '?usage=$usage&gender=$gender&number=$number&key=$btnApiKey';
     NetworkHelper networkHelper = NetworkHelper(url);
 
-    print('returning from NameRetreiver');
+    print('returning from NameRetriever');
     return await networkHelper.getData();
   }
 

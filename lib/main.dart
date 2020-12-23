@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:name_generator/resources/enums.dart';
 import 'package:name_generator/services/names.dart';
 
 void main() {
@@ -55,11 +56,31 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   NameRetriever nr = NameRetriever();
   String names = '';
+  List<String> lastNames = [];
+
+  Gender gender = Gender.male;
+  List<DropdownMenuItem> genders = [
+    DropdownMenuItem<Gender>(
+      value: Gender.male,
+      child: Text('male'),
+    ),
+    DropdownMenuItem<Gender>(
+      value: Gender.female,
+      child: Text('female'),
+    ),
+    DropdownMenuItem<Gender>(
+      value: Gender.either,
+      child: Text('either'),
+    )
+  ];
+
+  String usage = 'anci';
+
   int nameCount = 3;
   double sliderVal = 12.0;
   double numberCap = 12.0;
+
   bool surname = false;
-  List<String> lastNames = [];
 
   void _incrementCounter() {
     setState(() {
@@ -68,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      _counter++;
+      //_counter++;
     });
   }
 
@@ -76,20 +97,22 @@ class _MyHomePageState extends State<MyHomePage> {
     print('button hit');
     var nameArr;
     if (nameCount < 6) {
-      nameArr = nameDataToString(
-          await nr.getRandomNames('', 'anci', nameCount, surname), nameCount);
+      var nd =
+          await nr.getRandomNames(gender.string, usage, nameCount, surname);
+      nameArr = nameDataToString(nd, nameCount);
     } else {
-      nameArr =
-          nameDataToString(await nr.getRandomNames('', 'anci', 6, surname), 6);
+      var nd = await nr.getRandomNames(gender.string, usage, 6, surname);
+      nameArr = nameDataToString(nd, 6);
       for (int i = 1; i < nameCount / 6; i++) {
-        var currentBatch = await nr.getRandomNames('', 'anci', 6, surname);
+        var currentBatch =
+            await nr.getRandomNames(gender.string, usage, 6, surname);
         nameArr += nameDataToString(currentBatch, 6);
       }
 
       int remainder = nameCount % 6;
       for (int i = 0; i < remainder; i++) {
         var currentBatch =
-            await nr.getRandomNames('', 'anci', remainder, surname);
+            await nr.getRandomNames(gender.string, usage, remainder, surname);
         nameArr += nameDataToString(currentBatch, remainder);
       }
     }
@@ -179,8 +202,23 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+            Row(
+              children: <Widget>[
+                Text("Names should be "),
+                DropdownButton(
+                  items: genders,
+                  value: gender,
+                  style: TextStyle(
+                    color: Colors.purple,
+                  ),
+                  onChanged: (dynamic chosen) {
+                    setState(() {
+                      gender = chosen;
+                    });
+                  },
+                ),
+                Text(" names."),
+              ],
             ),
             Text(
               'The names are: $names',
