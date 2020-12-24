@@ -1,6 +1,7 @@
 # name_generator
 
-A simple web_app that allows for the generation of names.
+A simple application that allows for the generation of names, along with certain specifications.
+Uses API from Behind the Name.com, and can potentially use others.
 
 ## Getting Started
 
