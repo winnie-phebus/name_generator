@@ -60,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
   String names = '';
   List<String> lastNames = [];
 
-  Gender gender = Gender.male;
+  Gender gender = Gender.either;
   List<DropdownMenuItem> genders = [
     DropdownMenuItem<Gender>(
       value: Gender.male,
@@ -77,10 +77,10 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
 
   Source nameSource = defaultSource;
-  String usage = 'anci';
+  String usage = '';
 
   int nameCount = 3;
-  double sliderVal = 6.0;
+  double sliderVal = 7.0;
   double numberCap = 12.0;
 
   bool surname = false;
@@ -223,13 +223,21 @@ class _MyHomePageState extends State<MyHomePage> {
                 Text(" names."),
               ],
             ),
-            IconButton(
-              icon: Icon(Icons.search),
-              onPressed: () async {
-                nameSource =
-                    await showSearch(context: context, delegate: UsageSearch());
-                usage = nameSource.getCode();
-              },
+            Row(
+              children: [
+                Text(nameSource.display),
+                IconButton(
+                  icon: Icon(Icons.search),
+                  onPressed: () async {
+                    nameSource = await showSearch(
+                        context: context, delegate: UsageSearch());
+                    if (nameSource == null) {
+                      nameSource = defaultSource;
+                    }
+                    usage = nameSource.getCode();
+                  },
+                ),
+              ],
             ),
             Text(
               'The names are: $names',
@@ -292,6 +300,8 @@ class UsageSearch extends SearchDelegate<Source> {
             recents.add(chosen);
             close(context, chosen);
           } else {
+            print('$query');
+            //TODO: account for user press 'enter'
             showResults(context);
           }
         },
