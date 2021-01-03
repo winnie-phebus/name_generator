@@ -1,5 +1,8 @@
 import 'package:name_generator/resources/source.dart';
 
+//TODO: finally decide on a name!
+const String app_name = 'name_gen';
+
 const Source defaultSource = const Source('Default', '', 'btn');
 const Source ancient = const Source('Ancient', 'anci', 'btn');
 const Source ancientCeltic = const Source('Ancient Celtic', 'cela', 'btn');
