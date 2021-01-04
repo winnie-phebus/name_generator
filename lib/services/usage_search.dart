@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:name_generator/resources/source.dart';
 
-import 'constants.dart';
+import '../resources/constants.dart';
 
 class UsageSearch extends SearchDelegate<Source> {
   // Search Delegate is a built in Flutter library / class
-  // Credited towards MTECHVIRAL for majority of the use of this class.
+  // Credit towards MTECHVIRAL for majority of the basic use of this class.
   List<Source> nameSources = allNameSources;
 
   List<Source> recents = [];
@@ -64,9 +64,9 @@ class UsageSearch extends SearchDelegate<Source> {
     final suggestionList = query.isEmpty
         ? Source.sourceConverter(recents)
         : Source.sourceConverter(allNameSources)
-        .where((element) =>
-        element.toLowerCase().startsWith(query.toLowerCase()))
-        .toList();
+            .where((element) =>
+                element.toLowerCase().startsWith(query.toLowerCase()))
+            .toList();
 
     return ListView.builder(
       itemBuilder: (context, index) => ListTile(

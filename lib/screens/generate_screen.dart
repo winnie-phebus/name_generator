@@ -4,14 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:name_generator/resources/constants.dart';
 import 'package:name_generator/resources/enums.dart';
 import 'package:name_generator/resources/source.dart';
-import 'package:name_generator/resources/usage_search.dart';
+
 import 'package:name_generator/services/names.dart';
+import 'package:name_generator/services/usage_search.dart';
 
 class GenerateScreen extends StatefulWidget {
-  GenerateScreen({Key key, this.title}) : super(key: key);
+  //GenerateScreen({Key key, this.title}) : super(key: key);
   static String id = 'generate_screen';
 
-  final String title;
+  final String title = app_name;
 
   @override
   _GenerateScreenState createState() => _GenerateScreenState();
@@ -53,21 +54,21 @@ class _GenerateScreenState extends State<GenerateScreen> {
     if (nameCount < 6) {
       var nd =
           await nr.getRandomNames(gender.string, usage, nameCount, surname);
-      nameArr = nameDataToString(nd, nameCount);
+      nameArr = nr.nameDataToString(nd, nameCount);
     } else {
       var nd = await nr.getRandomNames(gender.string, usage, 6, surname);
-      nameArr = nameDataToString(nd, 6);
+      nameArr = nr.nameDataToString(nd, 6);
       for (int i = 1; i < nameCount / 6; i++) {
         var currentBatch =
             await nr.getRandomNames(gender.string, usage, 6, surname);
-        nameArr += nameDataToString(currentBatch, 6);
+        nameArr += nr.nameDataToString(currentBatch, 6);
       }
 
       int remainder = nameCount % 6;
       for (int i = 0; i < remainder; i++) {
         var currentBatch =
             await nr.getRandomNames(gender.string, usage, remainder, surname);
-        nameArr += nameDataToString(currentBatch, remainder);
+        nameArr += nr.nameDataToString(currentBatch, remainder);
       }
     }
     //print('running lastNames');
@@ -75,14 +76,6 @@ class _GenerateScreenState extends State<GenerateScreen> {
     //lastNames.add(ln);
     print('sending to newName');
     _newName(nameArr);
-  }
-
-  List nameDataToString(dynamic nameData, int length) {
-    var generatedNames = new List(length);
-    for (int i = 0; i < length; i++) {
-      generatedNames[i] = nameData['names'][i];
-    }
-    return generatedNames;
   }
 
   void _newName(List nameArr) {
@@ -93,14 +86,14 @@ class _GenerateScreenState extends State<GenerateScreen> {
         names = 'oops!';
         return;
       }
-      // TODO: adjust this so that 6 cap is worked around
+
       for (int i = 0; i < nameCount - 1; i++) {
         //String lastname = lastNames[i];
         String name = nameArr[i] + '';
         print(name);
         names += '$name, ';
       }
-      //print(names);
+
       String finalName = nameArr[nameArr.length - 1];
       print(finalName);
       names += finalName;
@@ -124,36 +117,12 @@ class _GenerateScreenState extends State<GenerateScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             IconButton(
@@ -223,7 +192,7 @@ class _GenerateScreenState extends State<GenerateScreen> {
         onPressed: _newNamePress,
         tooltip: 'New Names',
         child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }

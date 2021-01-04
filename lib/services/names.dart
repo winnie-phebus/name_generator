@@ -18,4 +18,12 @@ class NameRetriever {
   Future<dynamic> getLastName(String usage) async {
     return await getRandomNames('', usage, 1, true);
   }
+
+  List<String> nameDataToString(dynamic nameData, int length) {
+    var generatedNames = new List(length);
+    for (int i = 0; i < length; i++) {
+      generatedNames[i] = nameData['names'][i];
+    }
+    return generatedNames;
+  }
 }
