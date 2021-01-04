@@ -1,8 +1,39 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:name_generator/resources/source.dart';
 
+// NAME + APP DATA
 //TODO: finally decide on a name!
 const String app_name = 'name_gen';
 
+// THEMES + COLOR SWATCHES
+const Color kDarkPurple = Color(0xFF242038);
+const Color kSlateBlue = Color(0xFF725AC1);
+const Color kMiddleBluePurple = Color(0xFF8D86C9);
+const Color kLavenderGray = Color(0xFFCAC4CE);
+const Color kLinen = Color(0xFFF7ECE1);
+const Color kHoneydew = Color(0xFFE5F4E3);
+const Color kWhite = Color(0xFFFFFFFF);
+const Color kMintCream = Color(0xFFEDF7F6);
+const Color kSandyBrown = Color(0xFFF19953);
+const Color kCopper = Color(0xFFC47335);
+
+const ColorScheme kdefaultScheme = ColorScheme(
+    surface: kLavenderGray,
+    onSecondary: kDarkPurple,
+    onError: kLavenderGray,
+    brightness: Brightness.light,
+    onSurface: kDarkPurple,
+    onPrimary: kSlateBlue,
+    background: kLinen,
+    secondaryVariant: kCopper,
+    primaryVariant: kSlateBlue,
+    onBackground: kWhite,
+    error: kLinen,
+    secondary: kSandyBrown,
+    primary: kMiddleBluePurple);
+
+// USAGE SOURCES
 const Source defaultSource = const Source('Default', '', 'btn');
 const Source ancient = const Source('Ancient', 'anci', 'btn');
 const Source ancientCeltic = const Source('Ancient Celtic', 'cela', 'btn');

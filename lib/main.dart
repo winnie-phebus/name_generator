@@ -14,6 +14,7 @@ class NameGen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: app_name,
+      theme: ThemeData.from(colorScheme: kdefaultScheme),
       initialRoute: WelcomeScreen.id,
       routes: {
         WelcomeScreen.id: (context) => WelcomeScreen(),
