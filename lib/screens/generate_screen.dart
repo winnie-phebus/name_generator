@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:name_generator/resources/constants.dart';
 import 'package:name_generator/resources/enums.dart';
 import 'package:name_generator/resources/source.dart';
+import 'package:name_generator/screens/settings_screen.dart';
 
 import 'package:name_generator/services/names.dart';
 import 'package:name_generator/services/usage_search.dart';
@@ -54,6 +55,7 @@ class _GenerateScreenState extends State<GenerateScreen> {
     if (nameCount < 6) {
       var nd =
           await nr.getRandomNames(gender.string, usage, nameCount, surname);
+      print('nd is getting passed');
       nameArr = nr.nameDataToString(nd, nameCount);
     } else {
       var nd = await nr.getRandomNames(gender.string, usage, 6, surname);
@@ -127,7 +129,9 @@ class _GenerateScreenState extends State<GenerateScreen> {
           children: <Widget>[
             IconButton(
               icon: Icon(Icons.settings),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, SettingsScreen.id);
+              },
             ),
             Row(
               children: <Widget>[

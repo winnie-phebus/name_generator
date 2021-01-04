@@ -7,8 +7,10 @@ class NameRetriever {
   Future<dynamic> getRandomNames(
       String gender, String usage, int number, bool surname) async {
     String surnameString = surname ? 'yes' : 'no';
+    String usageSection = (usage == '') ? '' : 'usage=$usage&';
     String url = JSONbtnUrl +
-        '?usage=$usage&gender=$gender&number=$number&key=$btnApiKey';
+        '?$usageSection' +
+        'gender=$gender&number=$number&key=$btnApiKey';
     NetworkHelper networkHelper = NetworkHelper(url);
 
     print('returning from NameRetriever');
@@ -19,7 +21,9 @@ class NameRetriever {
     return await getRandomNames('', usage, 1, true);
   }
 
-  List<String> nameDataToString(dynamic nameData, int length) {
+  // TODO: find a way to move to names.dart
+  List nameDataToString(dynamic nameData, int length) {
+    print(nameData);
     var generatedNames = new List(length);
     for (int i = 0; i < length; i++) {
       generatedNames[i] = nameData['names'][i];
