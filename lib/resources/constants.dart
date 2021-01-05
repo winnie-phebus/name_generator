@@ -4,7 +4,7 @@ import 'package:name_generator/resources/source.dart';
 
 // NAME + APP DATA
 //TODO: finally decide on a name!
-const String app_name = 'name_gen';
+const String app_name = 'Nameleon';
 
 // THEMES + COLOR SWATCHES
 const Color kDarkPurple = Color(0xFF242038);

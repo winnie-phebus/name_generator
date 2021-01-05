@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "332555236028",
+    "project_id": "name-generator-c7e7a",
+    "storage_bucket": "name-generator-c7e7a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:332555236028:android:9954e1b6491f42606356b9",
+        "android_client_info": {
+          "package_name": "com.windorland.nameleon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "332555236028-9bq3hm37pqq1ec8dq376dndtq93hhua7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbLT9wEjdLatTHjBRXRHAQnxN8Uaw2tfw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "332555236028-9bq3hm37pqq1ec8dq376dndtq93hhua7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
