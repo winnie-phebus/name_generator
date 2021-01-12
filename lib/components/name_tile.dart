@@ -2,13 +2,26 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:name_generator/resources/constants.dart';
 
-class NameTile extends StatelessWidget {
-  final String name;
-  final String usage;
-  final String gender;
+class NameTile extends StatefulWidget {
+  String name;
+  String usage;
+  String gender;
   bool isFavorited;
 
+  @override
+  _NameTileState createState() =>
+      _NameTileState(name, usage, gender, isFavorited);
+
   NameTile(this.name, this.usage, this.gender, this.isFavorited);
+}
+
+class _NameTileState extends State<NameTile> {
+  String name;
+  String usage;
+  String gender;
+  bool isFavorited;
+
+  _NameTileState(this.name, this.usage, this.gender, this.isFavorited);
 
   void changeFavorited(bool favoriteStatus) {
     isFavorited = favoriteStatus;
@@ -21,7 +34,7 @@ class NameTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(5),
+      margin: EdgeInsets.symmetric(vertical: 5),
       height: 30.0,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -50,7 +63,10 @@ class NameTile extends StatelessWidget {
             icon: tileIcon(),
             color: kCopper,
             onPressed: () {
-              print(name);
+              setState(() {
+                print(name);
+                isFavorited = !isFavorited;
+              });
             },
           ),
         ],

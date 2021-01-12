@@ -46,7 +46,7 @@ class NameRetriever {
     List<Widget> nameTiles = new List<Widget>(length);
     for (int i = 0; i < length; i++) {
       NameTile currentName =
-          NameTile(nameData['names'][i], 'eng', 'ambiguous', true);
+          NameTile(nameData['names'][i], 'eng', 'ambiguous', false);
       nameTiles[i] = (currentName);
     }
     return nameTiles;

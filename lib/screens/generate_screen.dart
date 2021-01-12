@@ -114,8 +114,10 @@ class _GenerateScreenState extends State<GenerateScreen> {
 
       String finalName = nameArr[nameArr.length - 1];
       print(finalName);
-      names += finalName;
-      nameTiles = tilesArr;
+      setState(() {
+        names += finalName;
+        nameTiles = tilesArr;
+      });
       //names +=
       // nameData['names'][nameCount - 1] + ' ' + lastNames[nameCount - 1];
     });
@@ -139,12 +141,21 @@ class _GenerateScreenState extends State<GenerateScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: () {
+              Navigator.pushNamed(context, SettingsScreen.id);
+            },
+          ),
+        ],
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             ExpandablePanel(
+              iconColor: Theme.of(context).accentColor,
               header: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text('Adjust Conditions'.toUpperCase()),
@@ -165,8 +176,8 @@ class _GenerateScreenState extends State<GenerateScreen> {
                         items: genders,
                         value: gender,
                         style: TextStyle(
-                            //color: Colors.purple,
-                            ),
+                          color: Theme.of(context).primaryColor,
+                        ),
                         onChanged: (dynamic chosen) {
                           setState(() {
                             gender = chosen;
@@ -216,25 +227,26 @@ class _GenerateScreenState extends State<GenerateScreen> {
                 ],
               ),
             ),
-            IconButton(
-              icon: Icon(Icons.settings),
-              onPressed: () {
-                Navigator.pushNamed(context, SettingsScreen.id);
-              },
+            SizedBox(
+              height: 20,
             ),
             Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'The names are: ',
-                  style: Theme.of(context).textTheme.headline4,
-                ),
                 SizedBox(
                   height: 250,
                   child: CustomScrollView(
                     shrinkWrap: false,
                     slivers: <Widget>[
+                      SliverAppBar(
+                        automaticallyImplyLeading: false,
+                        backgroundColor: Theme.of(context).accentColor,
+                        floating: true,
+                        pinned: true,
+                        title: Text('The names are:'.toUpperCase()),
+                      ),
                       SliverPadding(
-                        padding: const EdgeInsets.all(20.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
                         sliver: SliverList(
                           delegate: SliverChildListDelegate(
                             nameTiles,
@@ -248,7 +260,13 @@ class _GenerateScreenState extends State<GenerateScreen> {
             ),
             OutlinedButton(
               child: Text('GENERATE'),
-              onPressed: _newNamePress,
+              onPressed: () {
+                setState(() {
+                  nameTiles = [];
+                  _newNamePress();
+                });
+              },
+              style: ButtonStyle(),
             ),
           ],
         ),
