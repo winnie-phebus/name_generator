@@ -4,6 +4,7 @@ import 'package:name_generator/screens/generate_screen.dart';
 import 'package:name_generator/screens/login_screen.dart';
 import 'package:name_generator/screens/settings_screen.dart';
 import 'package:name_generator/screens/signup_screen.dart';
+import 'package:name_generator/screens/user_screen.dart';
 import 'package:name_generator/screens/welcome_screen.dart';
 
 void main() => runApp(NameGen());
@@ -20,6 +21,7 @@ class NameGen extends StatelessWidget {
         WelcomeScreen.id: (context) => WelcomeScreen(),
         SignupScreen.id: (context) => SignupScreen(),
         LoginScreen.id: (context) => LoginScreen(),
+        UserScreen.id: (context) => UserScreen(),
         GenerateScreen.id: (context) => GenerateScreen(),
         SettingsScreen.id: (context) => SettingsScreen(),
       },

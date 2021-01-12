@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:name_generator/components/rounded_button.dart';
 import 'package:name_generator/resources/constants.dart';
 import 'package:name_generator/screens/generate_screen.dart';
 import 'package:name_generator/screens/signup_screen.dart';
+import 'package:name_generator/screens/user_screen.dart';
 
 import 'login_screen.dart';
 
@@ -44,6 +44,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               child: Text('Sign in using Google.'),
               onPressed: () {
                 print('Google');
+                Navigator.pushNamed(context, UserScreen.id);
               },
             ),
             OutlinedButton(

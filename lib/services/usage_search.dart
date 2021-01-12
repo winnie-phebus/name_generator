@@ -13,7 +13,6 @@ class UsageSearch extends SearchDelegate<Source> {
 
   @override
   List<Widget> buildActions(BuildContext context) {
-    // TODO: implement buildActions
     return [
       IconButton(
         icon: Icon(Icons.clear),
