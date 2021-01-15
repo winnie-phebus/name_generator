@@ -41,12 +41,24 @@ class NameRetriever {
     return generatedNames;
   }
 
-  List nameDataToNameTiles(dynamic nameData, int length) {
+  Future<NameTile> nameTileBuilder(String name, bool favorited) async {
+    var nd = await lookupName(name);
+    String usages = nd[0]['usages'][0]['usage_full'];
+    int cap = nd[0]["usages"].length;
+    for (int i = 1; i < cap; i++) {
+      usages += ", " + nd[0]['usages'][i]['usage_full'];
+    }
+    //print(nd[0]['usages'][1]['usage_full']);
+    var gender = nd[0]["gender"];
+    print(usages);
+    return NameTile(name, usages, gender, favorited);
+  }
+
+  Future<List> nameDataToNameTiles(dynamic nameData, int length) async {
     print(nameData);
     List<Widget> nameTiles = new List<Widget>(length);
     for (int i = 0; i < length; i++) {
-      NameTile currentName =
-          NameTile(nameData['names'][i], 'eng', 'ambiguous', false);
+      NameTile currentName = await nameTileBuilder(nameData['names'][i], false);
       nameTiles[i] = (currentName);
     }
     return nameTiles;

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:name_generator/components/name_tile.dart';
 import 'package:name_generator/resources/source.dart';
 
 // NAME + APP DATA
@@ -48,6 +49,9 @@ const ColorScheme kdefaultScheme = ColorScheme(
     error: kLinen,
     secondary: kSandyBrown,
     primary: kMiddleBluePurple);
+
+// Example NameTile
+var kWinn = NameTile('Winnie', 'English', 'Female', false);
 
 // USAGE SOURCES
 const Source defaultSource = const Source('Default', '', 'btn');

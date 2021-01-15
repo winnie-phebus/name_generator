@@ -23,6 +23,12 @@ class _NameTileState extends State<NameTile> {
 
   _NameTileState(this.name, this.usage, this.gender, this.isFavorited);
 
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    // TODO: implement toString
+    return "$name, $usage, $gender, $isFavorited";
+  }
+
   void changeFavorited(bool favoriteStatus) {
     isFavorited = favoriteStatus;
   }
@@ -31,33 +37,51 @@ class _NameTileState extends State<NameTile> {
     return (isFavorited) ? Icon(Icons.star) : Icon(Icons.star_border);
   }
 
+  //TODO: make everything line up all nicely
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 5),
-      height: 30.0,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                name,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15.0,
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      name,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15.0,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Text(
+                      '$gender.',
+                      style: TextStyle(
+                        fontSize: 9.0,
+                      ),
+                    )
+                  ],
                 ),
-              ),
-              Text(
-                '$usage, $gender',
-                style: TextStyle(
-                  fontSize: 9.0,
+                Container(
+                  width: 270,
+                  child: Text(
+                    '$usage',
+                    style: TextStyle(
+                      fontSize: 9.0,
+                    ),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           IconButton(
             icon: tileIcon(),
