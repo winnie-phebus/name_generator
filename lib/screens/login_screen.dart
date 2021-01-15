@@ -19,6 +19,9 @@ class _LoginScreenState extends State<LoginScreen> {
   String email;
   String password;
 
+  bool hidePassword = true;
+  IconData passwordVisual = Icons.remove_red_eye_outlined;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
           padding: EdgeInsets.symmetric(horizontal: 24.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            // crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               TextField(
                 keyboardType: TextInputType.emailAddress,
@@ -41,26 +44,39 @@ class _LoginScreenState extends State<LoginScreen> {
                 onChanged: (value) {
                   email = value;
                 },
-                decoration:
-                    kTextFieldDecoration.copyWith(hintText: 'Enter your email'),
+                decoration: kTextFieldDecoration.copyWith(
+                    hintText: 'Enter your email', prefixText: 'Email:'),
               ),
               SizedBox(
                 height: 8.0,
               ),
               TextField(
-                obscureText: true,
+                obscureText: hidePassword,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
                   password = value;
                 },
                 decoration: kTextFieldDecoration.copyWith(
-                    hintText: 'Enter your password.'),
+                  hintText: 'Enter your password.',
+                  prefixText: 'Password:',
+                ),
+              ),
+              IconButton(
+                icon: Icon(passwordVisual),
+                onPressed: () {
+                  setState(() {
+                    hidePassword = !hidePassword;
+                    passwordVisual = hidePassword
+                        ? Icons.remove_red_eye_outlined
+                        : Icons.remove_red_eye;
+                  });
+                },
               ),
               SizedBox(
                 height: 24.0,
               ),
               RoundedButton(
-                color: Colors.lightBlueAccent,
+                color: Theme.of(context).bottomAppBarColor,
                 title: 'Log In',
                 onPressed: () async {
                   setState(() {

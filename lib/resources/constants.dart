@@ -21,6 +21,7 @@ const Color kCopper = Color(0xFFC47335);
 
 const kTextFieldDecoration = InputDecoration(
   hintText: '',
+  prefixText: '',
   contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
   border: OutlineInputBorder(
     borderRadius: BorderRadius.all(Radius.circular(32.0)),

@@ -48,9 +48,7 @@ class NameRetriever {
     for (int i = 1; i < cap; i++) {
       usages += ", " + nd[0]['usages'][i]['usage_full'];
     }
-    //print(nd[0]['usages'][1]['usage_full']);
     var gender = nd[0]["gender"];
-    print(usages);
     return NameTile(name, usages, gender, favorited);
   }
 

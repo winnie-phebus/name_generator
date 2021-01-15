@@ -32,7 +32,6 @@ class _UserScreenState extends State<UserScreen> {
   @override
   void initState() {
     super.initState();
-    //setTestTile();
     getCurrentUser();
   }
 
@@ -50,8 +49,8 @@ class _UserScreenState extends State<UserScreen> {
   void favoritesStream() async {
     await for (var snapshot
         in _firestore.collection('favorite_names').snapshots()) {
-      for (var message in snapshot.docs) {
-        print(message.data);
+      for (var favorite in snapshot.docs) {
+        print(favorite.data);
       }
     }
   }
@@ -62,28 +61,53 @@ class _UserScreenState extends State<UserScreen> {
       appBar: AppBar(),
       body: Column(
         children: [
-          NameTile(
-              'Sandra',
-              'Italian, English, French, Spanish, Portuguese, German, Dutch, Swedish, Norwegian, Danish, Icelandic, Latvian, Lithuanian, Polish, Slovene, Croatian, Serbian, Macedonian, Czech, Romanian',
-              'f',
-              true),
-          ModalProgressHUD(
-            inAsyncCall: showSpinner,
-            child: SizedBox(
-              height: 300,
-              child: CustomScrollView(
-                shrinkWrap: false,
-              ),
-            ),
-          ),
+          FavoritesStream(),
           FloatingActionButton(onPressed: () {
             setState(() {
               setTestTile();
             });
-            print(nr.nameTileBuilder('Sandra', true));
           })
         ],
       ),
+    );
+  }
+}
+
+class FavoritesStream extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder(
+      stream: _firestore.collection('favorite_names').snapshots(),
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) {
+          return Center(
+            child: CircularProgressIndicator(
+              backgroundColor: Theme.of(context).accentColor,
+            ),
+          );
+        }
+
+        final favorites = snapshot.data.documents;
+        List<NameTile> tilesArr = [];
+
+        for (var fav in favorites) {
+          final favoriteName = fav.data['name'];
+          final favoriteUsage = fav.data['usage'];
+          final favoriteGender = fav.data['gender'];
+
+          final currentUser = loggedInUser.email;
+
+          final favNameTile =
+              NameTile(favoriteName, favoriteUsage, favoriteGender, true);
+          tilesArr.add(favNameTile);
+        }
+        return Expanded(
+          child: ListView(
+            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+            children: tilesArr,
+          ),
+        );
+      },
     );
   }
 }
