@@ -5,6 +5,7 @@ import 'package:name_generator/components/rounded_button.dart';
 import 'package:name_generator/resources/constants.dart';
 import 'package:name_generator/screens/generate_screen.dart';
 
+//TODO: catch errors and display them on the screen instead of hanging
 class LoginScreen extends StatefulWidget {
   static String id = 'login_screen';
   @override

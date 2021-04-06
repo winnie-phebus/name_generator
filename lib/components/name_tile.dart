@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:name_generator/resources/constants.dart';
 
 class NameTile extends StatefulWidget {
@@ -89,7 +90,9 @@ class _NameTileState extends State<NameTile> {
             onPressed: () {
               setState(() {
                 print(name);
-                isFavorited = !isFavorited;
+                changeFavorited(!isFavorited);
+
+                /// isFavorited = !isFavorited;
               });
             },
           ),
