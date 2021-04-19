@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:name_generator/components/popup_dialog.dart';
 import 'package:name_generator/components/rounded_button.dart';
 import 'package:name_generator/resources/constants.dart';
 import 'package:name_generator/screens/generate_screen.dart';
 
-//TODO: catch errors and display them on the screen instead of hanging
 class LoginScreen extends StatefulWidget {
   static String id = 'login_screen';
   @override
@@ -46,7 +46,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   email = value;
                 },
                 decoration: kTextFieldDecoration.copyWith(
-                    hintText: 'Enter your email', prefixText: 'Email:'),
+                    //prefixText: 'Email:',
+                    hintText: 'Your email, please'.toUpperCase()),
               ),
               SizedBox(
                 height: 8.0,
@@ -58,8 +59,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   password = value;
                 },
                 decoration: kTextFieldDecoration.copyWith(
-                  hintText: 'Enter your password.',
-                  prefixText: 'Password:',
+                  hintText: 'Your password, please'.toUpperCase(),
+                  //prefixText: 'Password:',
                 ),
               ),
               IconButton(
@@ -96,6 +97,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     print('LOGIN ERROR: ');
                     print('Is this device connected to the internet?');
                     print(e);
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) => ErrorPopUp(
+                          'LogIn Error'.toUpperCase(),
+                          'Error: ' + e.toString() + '\n Try again?'),
+                    );
+                    setState(() {
+                      showSpinner = false;
+                    });
                   }
                 },
               ),

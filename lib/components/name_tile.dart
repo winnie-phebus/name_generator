@@ -26,7 +26,6 @@ class _NameTileState extends State<NameTile> {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    // TODO: implement toString
     return "$name, $usage, $gender, $isFavorited";
   }
 
@@ -34,6 +33,7 @@ class _NameTileState extends State<NameTile> {
     isFavorited = favoriteStatus;
   }
 
+  void updateFavorites() {}
   Icon tileIcon() {
     return (isFavorited) ? Icon(Icons.star) : Icon(Icons.star_border);
   }
@@ -91,8 +91,7 @@ class _NameTileState extends State<NameTile> {
               setState(() {
                 print(name);
                 changeFavorited(!isFavorited);
-
-                /// isFavorited = !isFavorited;
+                updateFavorites();
               });
             },
           ),

@@ -5,6 +5,7 @@ import 'package:name_generator/screens/generate_screen.dart';
 import 'package:name_generator/screens/signup_screen.dart';
 import 'package:name_generator/screens/user_screen.dart';
 
+import 'google_screen.dart';
 import 'login_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -41,20 +42,20 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               height: 15,
             ),
             OutlinedButton(
-              child: Text('Sign in using Google.'),
+              child: Text('Google Sign In'.toUpperCase()),
               onPressed: () {
                 print('Google');
-                Navigator.pushNamed(context, UserScreen.id);
+                Navigator.pushNamed(context, GoogleScreen.id);
               },
             ),
             OutlinedButton(
-              child: Text('Log In'),
+              child: Text('Log In'.toUpperCase()),
               onPressed: () {
                 Navigator.pushNamed(context, LoginScreen.id);
               },
             ),
             TextButton(
-              child: Text('Sign Up / Create an Account'),
+              child: Text('Sign Up'.toUpperCase()),
               onPressed: () {
                 Navigator.pushNamed(context, SignupScreen.id);
               },
