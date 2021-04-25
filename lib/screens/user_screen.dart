@@ -58,15 +58,21 @@ class _UserScreenState extends State<UserScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text('User Information Page'),
+      ),
       body: Column(
         children: [
           FavoritesStream(),
-          FloatingActionButton(onPressed: () {
-            setState(() {
-              setTestTile();
-            });
-          })
+          FloatingActionButton(
+              child: Text('Press'.toUpperCase()),
+              onPressed: () {
+                setState(
+                  () {
+                    // setTestTile();
+                  },
+                );
+              })
         ],
       ),
     );
@@ -79,6 +85,7 @@ class FavoritesStream extends StatelessWidget {
     return StreamBuilder(
       stream: _firestore.collection('favorite_names').snapshots(),
       builder: (context, snapshot) {
+        List<NameTile> tilesArr = [];
         if (!snapshot.hasData) {
           return Center(
             child: CircularProgressIndicator(
@@ -86,20 +93,24 @@ class FavoritesStream extends StatelessWidget {
             ),
           );
         }
+        try {
+          final favorites = snapshot.data.documents;
+          print(favorites.length);
+          for (var fav in favorites) {
+            if (fav.data()[kFAVEUSER] == loggedInUser.email) {
+              final favoriteName = fav.data()[kFAVENAME];
+              final favoriteUsage = fav.data()[kFAVEUSAGE];
+              final favoriteGender = fav.data()[kFAVEGENDER];
 
-        final favorites = snapshot.data.documents;
-        List<NameTile> tilesArr = [];
+              final currentUser = loggedInUser;
 
-        for (var fav in favorites) {
-          final favoriteName = fav.data['name'];
-          final favoriteUsage = fav.data['usage'];
-          final favoriteGender = fav.data['gender'];
-
-          final currentUser = loggedInUser;
-
-          final favNameTile = NameTile(
-              favoriteName, favoriteUsage, favoriteGender, currentUser, true);
-          tilesArr.add(favNameTile);
+              final favNameTile = NameTile(favoriteName, favoriteUsage,
+                  favoriteGender, currentUser, true);
+              tilesArr.add(favNameTile);
+            }
+          }
+        } catch (e) {
+          print(e);
         }
         return Expanded(
           child: ListView(

@@ -51,15 +51,15 @@ class _NameTileState extends State<NameTile> {
     );
   }
 
-  void updateFavorites(String name, String usage, String gender) {
-    isFavorited = !isFavorited;
+  void updateFavorites(bool favoriteStatus) {
+    isFavorited = favoriteStatus;
     if (isFavorited) {
       try {
         _firestore.collection('favorite_names').add({
-          'name': name,
-          'usages': usage,
-          'gender': gender,
-          'user': currentUser.email
+          kFAVENAME: name,
+          kFAVEUSAGE: usage,
+          kFAVEGENDER: gender,
+          kFAVEUSER: currentUser.email
         });
       } catch (e) {
         isFavorited = false;
@@ -133,8 +133,7 @@ class _NameTileState extends State<NameTile> {
             onPressed: () {
               setState(() {
                 print(name);
-                changeFavorited(!isFavorited);
-                updateFavorites(this.name, this.usage, this.gender);
+                updateFavorites(!isFavorited);
               });
             },
           ),

@@ -7,6 +7,12 @@ import 'package:name_generator/resources/source.dart';
 //TODO: finally decide on a name!
 const String app_name = 'Nameleon';
 
+// DOCUMENT FIELDS
+const String kFAVENAME = 'name';
+const String kFAVEUSAGE = 'usages';
+const String kFAVEGENDER = 'gender';
+const String kFAVEUSER = 'user';
+
 // THEMES + COLOR SWATCHES
 const Color kDarkPurple = Color(0xFF242038);
 const Color kSlateBlue = Color(0xFF725AC1);
