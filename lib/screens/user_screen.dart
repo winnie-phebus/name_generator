@@ -7,6 +7,7 @@ import 'package:name_generator/components/name_tile.dart';
 import 'package:name_generator/resources/constants.dart';
 import 'package:name_generator/screens/generate_screen.dart';
 import 'package:name_generator/screens/signup_screen.dart';
+import 'package:name_generator/services/favorites_stream.dart';
 import 'package:name_generator/services/names.dart';
 
 final _firestore = FirebaseFirestore.instance;
@@ -63,7 +64,8 @@ class _UserScreenState extends State<UserScreen> {
       ),
       body: Column(
         children: [
-          FavoritesStream(),
+          Text("Favorites: ".toUpperCase()),
+          FavoritesStream(loggedInUser),
           FloatingActionButton(
               child: Text('Press'.toUpperCase()),
               onPressed: () {
@@ -75,50 +77,6 @@ class _UserScreenState extends State<UserScreen> {
               })
         ],
       ),
-    );
-  }
-}
-
-class FavoritesStream extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return StreamBuilder(
-      stream: _firestore.collection('favorite_names').snapshots(),
-      builder: (context, snapshot) {
-        List<NameTile> tilesArr = [];
-        if (!snapshot.hasData) {
-          return Center(
-            child: CircularProgressIndicator(
-              backgroundColor: Theme.of(context).accentColor,
-            ),
-          );
-        }
-        try {
-          final favorites = snapshot.data.documents;
-          print(favorites.length);
-          for (var fav in favorites) {
-            if (fav.data()[kFAVEUSER] == loggedInUser.email) {
-              final favoriteName = fav.data()[kFAVENAME];
-              final favoriteUsage = fav.data()[kFAVEUSAGE];
-              final favoriteGender = fav.data()[kFAVEGENDER];
-
-              final currentUser = loggedInUser;
-
-              final favNameTile = NameTile(favoriteName, favoriteUsage,
-                  favoriteGender, currentUser, true);
-              tilesArr.add(favNameTile);
-            }
-          }
-        } catch (e) {
-          print(e);
-        }
-        return Expanded(
-          child: ListView(
-            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-            children: tilesArr,
-          ),
-        );
-      },
     );
   }
 }

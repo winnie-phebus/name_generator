@@ -54,6 +54,7 @@ class NameRetriever {
       usages += ", " + nd[0]['usages'][i]['usage_full'];
     }
     var gender = nd[0]["gender"];
+    print(currentUser.email);
     return NameTile(name, usages, gender, currentUser, favorited);
   }
 

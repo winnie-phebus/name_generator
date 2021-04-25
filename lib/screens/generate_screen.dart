@@ -22,6 +22,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 final _firestore = FirebaseFirestore.instance;
 User loggedInUser;
+NameRetriever nr;
 
 class GenerateScreen extends StatefulWidget {
   static String id = 'generate_screen';
@@ -36,7 +37,6 @@ class _GenerateScreenState extends State<GenerateScreen> {
   final _auth = FirebaseAuth.instance;
   User currentUser = loggedInUser;
 
-  NameRetriever nr = NameRetriever(loggedInUser);
   String names = '';
   List<Widget> nameTiles = [Text('No Names Yet.')];
   List<String> lastNames = [];
@@ -158,6 +158,8 @@ class _GenerateScreenState extends State<GenerateScreen> {
     super.initState();
 
     getCurrentUser();
+    print(loggedInUser);
+    nr = NameRetriever(loggedInUser);
   }
 
   void getCurrentUser() async {

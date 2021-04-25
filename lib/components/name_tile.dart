@@ -46,7 +46,7 @@ class _NameTileState extends State<NameTile> {
     showDialog(
       context: context,
       builder: (BuildContext context) => ErrorPopUp(
-          'Favoriting Error'.toUpperCase(),
+          'Favorite Error'.toUpperCase(),
           'Error: ' + e.toString() + '\n Try again?'),
     );
   }
