@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:expandable/expandable.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:name_generator/components/name_tile.dart';
+import 'package:name_generator/components/popup_dialog.dart';
 
 import 'package:name_generator/resources/constants.dart';
 import 'package:name_generator/resources/enums.dart';
@@ -16,6 +17,12 @@ import 'package:name_generator/screens/user_screen.dart';
 import 'package:name_generator/services/names.dart';
 import 'package:name_generator/services/usage_search.dart';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+final _firestore = FirebaseFirestore.instance;
+User loggedInUser;
+
 class GenerateScreen extends StatefulWidget {
   static String id = 'generate_screen';
 
@@ -26,7 +33,10 @@ class GenerateScreen extends StatefulWidget {
 }
 
 class _GenerateScreenState extends State<GenerateScreen> {
-  NameRetriever nr = NameRetriever();
+  final _auth = FirebaseAuth.instance;
+  User currentUser = loggedInUser;
+
+  NameRetriever nr = NameRetriever(loggedInUser);
   String names = '';
   List<Widget> nameTiles = [Text('No Names Yet.')];
   List<String> lastNames = [];
@@ -47,7 +57,7 @@ class _GenerateScreenState extends State<GenerateScreen> {
     )
   ];
 
-  Source nameSource = defaultSource;
+  Origin nameSource = defaultSource;
   String usage = '';
 
   int nameCount = 7;
@@ -140,6 +150,31 @@ class _GenerateScreenState extends State<GenerateScreen> {
   Future<dynamic> _lastNames() async {
     for (int i = 0; i < nameCount - 1; i++) {
       lastNames.add(await _lastName());
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    getCurrentUser();
+  }
+
+  void getCurrentUser() async {
+    try {
+      final user = await _auth.currentUser;
+      if (user != null) {
+        loggedInUser = user;
+      }
+      print(loggedInUser.email);
+    } catch (e) {
+      print(e);
+      showDialog(
+        context: context,
+        builder: (BuildContext context) => ErrorPopUp(
+            'LogIn Error'.toUpperCase(),
+            'Error: ' + e.toString() + '\n Try logging in again?'),
+      );
     }
   }
 

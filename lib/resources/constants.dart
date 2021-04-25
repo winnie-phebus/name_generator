@@ -52,18 +52,19 @@ const ColorScheme kdefaultScheme = ColorScheme(
     primary: kMiddleBluePurple);
 
 // Example NameTile
-var kWinn = NameTile('Winnie', 'English', 'Female', false);
+//var kWinn =
+//NameTile('Winnie', 'English', 'Female', 'doronelle7@gmail.com', false);
 
 // USAGE SOURCES
-const Source defaultSource = const Source('Default', '', 'btn');
-const Source ancient = const Source('Ancient', 'anci', 'btn');
-const Source ancientCeltic = const Source('Ancient Celtic', 'cela', 'btn');
-const Source ancientGreek = const Source('Ancient Greek', 'gmca', 'btn');
-const Source ancientRoman = const Source('Ancient Roman', 'roma', 'btn');
-const Source ancientScandi =
-    const Source('Ancient Scandinavian', 'scaa', 'btn');
+const Origin defaultSource = const Origin('Default', '', 'btn');
+const Origin ancient = const Origin('Ancient', 'anci', 'btn');
+const Origin ancientCeltic = const Origin('Ancient Celtic', 'cela', 'btn');
+const Origin ancientGreek = const Origin('Ancient Greek', 'gmca', 'btn');
+const Origin ancientRoman = const Origin('Ancient Roman', 'roma', 'btn');
+const Origin ancientScandi =
+    const Origin('Ancient Scandinavian', 'scaa', 'btn');
 
-const List<Source> tag_ancient = [
+const List<Origin> tag_ancient = [
   ancient,
   ancientCeltic,
   ancientGreek,
@@ -71,19 +72,19 @@ const List<Source> tag_ancient = [
   ancientScandi
 ];
 
-const Source astronomy = const Source('Astronomy', 'astr', 'btn');
-const Source fairy = const Source('Fairy', 'fairy', 'btn');
-const Source goth = const Source('Goth', 'goth', 'btn');
-const Source hillbilly = const Source('Hillbilly', 'hb', 'btn');
-const Source hippy = const Source('Hippy', 'hippy', 'btn');
-const Source kreatyve = const Source('Kreatyve', 'kk', 'btn');
-const Source pet = const Source('Pet', 'pets', 'btn');
-const Source rapper = const Source('Rapper', 'rap', 'btn');
-const Source transformer = const Source('Transformer', 'trans', 'btn');
-const Source witch = const Source('Witch', 'witch', 'btn');
-const Source wrestler = const Source('Wrestler', 'wrest', 'btn');
+const Origin astronomy = const Origin('Astronomy', 'astr', 'btn');
+const Origin fairy = const Origin('Fairy', 'fairy', 'btn');
+const Origin goth = const Origin('Goth', 'goth', 'btn');
+const Origin hillbilly = const Origin('Hillbilly', 'hb', 'btn');
+const Origin hippy = const Origin('Hippy', 'hippy', 'btn');
+const Origin kreatyve = const Origin('Kreatyve', 'kk', 'btn');
+const Origin pet = const Origin('Pet', 'pets', 'btn');
+const Origin rapper = const Origin('Rapper', 'rap', 'btn');
+const Origin transformer = const Origin('Transformer', 'trans', 'btn');
+const Origin witch = const Origin('Witch', 'witch', 'btn');
+const Origin wrestler = const Origin('Wrestler', 'wrest', 'btn');
 
-const List<Source> tag_fun = [
+const List<Origin> tag_fun = [
   astronomy,
   fairy,
   goth,
@@ -97,7 +98,7 @@ const List<Source> tag_fun = [
   wrestler
 ];
 
-const List<Source> allNameSources = [
+const List<Origin> allNameSources = [
   ancient,
   ancientCeltic,
   ancientGreek,

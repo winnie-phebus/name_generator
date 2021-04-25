@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:name_generator/components/name_tile.dart';
 import 'package:name_generator/services/networking.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 const btnApiKey = 'wi948351677';
 const JSONbtnUrl = 'https://www.behindthename.com/api/';
 
 class NameRetriever {
+  User currentUser;
+
+  NameRetriever(this.currentUser);
+
   Future<dynamic> lookupName(String name) async {
     String url = JSONbtnUrl + 'lookup.json?name=$name&key=$btnApiKey';
     NetworkHelper networkHelper = NetworkHelper(url);
@@ -49,7 +54,7 @@ class NameRetriever {
       usages += ", " + nd[0]['usages'][i]['usage_full'];
     }
     var gender = nd[0]["gender"];
-    return NameTile(name, usages, gender, favorited);
+    return NameTile(name, usages, gender, currentUser, favorited);
   }
 
   Future<List> nameDataToNameTiles(dynamic nameData, int length) async {

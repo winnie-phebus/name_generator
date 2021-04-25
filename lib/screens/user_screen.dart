@@ -22,8 +22,8 @@ class UserScreen extends StatefulWidget {
 class _UserScreenState extends State<UserScreen> {
   final _auth = FirebaseAuth.instance;
   bool showSpinner = false;
-  NameRetriever nr = new NameRetriever();
-  NameTile testTile = NameTile('Jamie', 'eng', 'mf', true);
+  NameRetriever nr = new NameRetriever(loggedInUser);
+  NameTile testTile = NameTile('Jamie', 'eng', 'mf', loggedInUser, true);
 
   void setTestTile() async {
     testTile = await nr.nameTileBuilder('Sandra', true);
@@ -95,10 +95,10 @@ class FavoritesStream extends StatelessWidget {
           final favoriteUsage = fav.data['usage'];
           final favoriteGender = fav.data['gender'];
 
-          final currentUser = loggedInUser.email;
+          final currentUser = loggedInUser;
 
-          final favNameTile =
-              NameTile(favoriteName, favoriteUsage, favoriteGender, true);
+          final favNameTile = NameTile(
+              favoriteName, favoriteUsage, favoriteGender, currentUser, true);
           tilesArr.add(favNameTile);
         }
         return Expanded(

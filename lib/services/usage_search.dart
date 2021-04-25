@@ -3,13 +3,13 @@ import 'package:name_generator/resources/source.dart';
 
 import '../resources/constants.dart';
 
-class UsageSearch extends SearchDelegate<Source> {
+class UsageSearch extends SearchDelegate<Origin> {
   // Search Delegate is a built in Flutter library / class
   // Credit towards MTECHVIRAL for majority of the basic use of this class.
-  List<Source> nameSources = allNameSources;
+  List<Origin> nameSources = allNameSources;
 
-  List<Source> recents = [];
-  List<Source> favorites = [];
+  List<Origin> recents = [];
+  List<Origin> favorites = [];
 
   @override
   List<Widget> buildActions(BuildContext context) {
@@ -23,7 +23,7 @@ class UsageSearch extends SearchDelegate<Source> {
       IconButton(
         icon: Icon(Icons.check),
         onPressed: () {
-          Source chosen = Source.displayToSource(query);
+          Origin chosen = Origin.displayToSource(query);
           if (chosen != null) {
             print('$query, ' + chosen.display);
             recents.add(chosen);
@@ -61,8 +61,8 @@ class UsageSearch extends SearchDelegate<Source> {
   @override
   Widget buildSuggestions(BuildContext context) {
     final suggestionList = query.isEmpty
-        ? Source.sourceConverter(recents)
-        : Source.sourceConverter(allNameSources)
+        ? Origin.sourceConverter(recents)
+        : Origin.sourceConverter(allNameSources)
             .where((element) =>
                 element.toLowerCase().startsWith(query.toLowerCase()))
             .toList();
