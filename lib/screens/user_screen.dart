@@ -26,10 +26,6 @@ class _UserScreenState extends State<UserScreen> {
   NameRetriever nr = new NameRetriever(loggedInUser);
   NameTile testTile = NameTile('Jamie', 'eng', 'mf', loggedInUser, true);
 
-  void setTestTile() async {
-    testTile = await nr.nameTileBuilder('Sandra', true);
-  }
-
   @override
   void initState() {
     super.initState();

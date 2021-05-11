@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import 'package:expandable/expandable.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
-import 'package:name_generator/components/name_tile.dart';
 import 'package:name_generator/components/popup_dialog.dart';
 
 import 'package:name_generator/resources/constants.dart';
@@ -71,38 +70,49 @@ class _GenerateScreenState extends State<GenerateScreen> {
     print('button hit');
     var nameArr;
     var tilesArr;
+    Origin nameOrigin;
 
     setState(() {
       showSpinner = true;
     });
     // for when name count is less than 6
-    if (nameCount < 6) {
-      var nd =
-          await nr.getRandomNames(gender.string, usage, nameCount, surname);
-      print('nd is getting passed');
-      nameArr = nr.nameDataToString(nd, nameCount);
-      tilesArr = await nr.nameDataToNameTiles(nd, nameCount);
-      print(tilesArr[1]);
+
+    if (tag_fun.contains(nameSource)) {
+      nameOrigin = nameSource;
     } else {
-      var nd = await nr.getRandomNames(gender.string, usage, 6, surname);
-      nameArr = nr.nameDataToString(nd, 6);
-      tilesArr = await nr.nameDataToNameTiles(nd, 6);
-
-      for (int i = 2; i <= nameCount / 6; i++) {
-        //this goes as many times as 6 is a multiple of namecount
-        var currentBatch =
-            await nr.getRandomNames(gender.string, usage, 6, surname);
-        nameArr += nr.nameDataToString(currentBatch, 6);
-        tilesArr += await nr.nameDataToNameTiles(currentBatch, 6);
-      }
-
-      // and this just accounts for the remainder
-      int remainder = nameCount % 6;
-      var currentBatch =
-          await nr.getRandomNames(gender.string, usage, remainder, surname);
-      nameArr += nr.nameDataToString(currentBatch, remainder);
-      tilesArr += await nr.nameDataToNameTiles(currentBatch, remainder);
+      nameOrigin = null;
     }
+
+    try {
+      if (nameCount < 6) {
+        var nd =
+            await nr.getRandomNames(gender.string, usage, nameCount, surname);
+        print('nd is getting passed');
+        nameArr = nr.nameDataToString(nd, nameCount);
+        tilesArr = await nr.nameDataToNameTiles(nd, nameOrigin, nameCount);
+        print(tilesArr[1]);
+      } else {
+        var nd = await nr.getRandomNames(gender.string, usage, 6, surname);
+        nameArr = nr.nameDataToString(nd, 6);
+        tilesArr = await nr.nameDataToNameTiles(nd, nameOrigin, 6);
+
+        for (int i = 2; i <= nameCount / 6; i++) {
+          //this goes as many times as 6 is a multiple of name count
+          var currentBatch =
+              await nr.getRandomNames(gender.string, usage, 6, surname);
+          nameArr += nr.nameDataToString(currentBatch, 6);
+          tilesArr += await nr.nameDataToNameTiles(currentBatch, nameOrigin, 6);
+        }
+
+        // and this just accounts for the remainder
+        int remainder = nameCount % 6;
+        var currentBatch =
+            await nr.getRandomNames(gender.string, usage, remainder, surname);
+        nameArr += nr.nameDataToString(currentBatch, remainder);
+        tilesArr +=
+            await nr.nameDataToNameTiles(currentBatch, nameOrigin, remainder);
+      }
+    } catch (e) {}
     //print('running lastNames');
     //var ln = await _lastName();
     //lastNames.add(ln);
@@ -164,7 +174,7 @@ class _GenerateScreenState extends State<GenerateScreen> {
 
   void getCurrentUser() async {
     try {
-      final user = await _auth.currentUser;
+      final user = _auth.currentUser;
       if (user != null) {
         loggedInUser = user;
       }

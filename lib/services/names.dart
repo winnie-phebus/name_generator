@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:name_generator/components/name_tile.dart';
+import 'package:name_generator/resources/source.dart';
 import 'package:name_generator/services/networking.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -8,6 +9,7 @@ const JSONbtnUrl = 'https://www.behindthename.com/api/';
 
 class NameRetriever {
   User currentUser;
+  final _auth = FirebaseAuth.instance;
 
   NameRetriever(this.currentUser);
 
@@ -46,23 +48,33 @@ class NameRetriever {
     return generatedNames;
   }
 
-  Future<NameTile> nameTileBuilder(String name, bool favorited) async {
-    var nd = await lookupName(name);
-    String usages = nd[0]['usages'][0]['usage_full'];
-    int cap = nd[0]["usages"].length;
-    for (int i = 1; i < cap; i++) {
-      usages += ", " + nd[0]['usages'][i]['usage_full'];
+  Future<NameTile> nameTileBuilder(
+      String name, Origin nameOrigin, bool favorited) async {
+    String usages = nameOrigin.display;
+    String gender = 'mf';
+    if (nameOrigin == null) {
+      var nd = await lookupName(name);
+      print('$nd for $name');
+      usages = nd[0]['usages'][0]['usage_full'];
+      int cap = nd[0]["usages"].length;
+      for (int i = 1; i < cap; i++) {
+        usages += ", " + nd[0]['usages'][i]['usage_full'];
+      }
+      var gender = nd[0]["gender"];
     }
-    var gender = nd[0]["gender"];
-    print(currentUser.email);
+    //print(currentUser);
+    currentUser = _auth.currentUser;
+    //print(currentUser.email);
     return NameTile(name, usages, gender, currentUser, favorited);
   }
 
-  Future<List> nameDataToNameTiles(dynamic nameData, int length) async {
+  Future<List> nameDataToNameTiles(
+      dynamic nameData, Origin nameOrigin, int length) async {
     print(nameData);
     List<Widget> nameTiles = new List<Widget>(length);
     for (int i = 0; i < length; i++) {
-      NameTile currentName = await nameTileBuilder(nameData['names'][i], false);
+      NameTile currentName =
+          await nameTileBuilder(nameData['names'][i], nameOrigin, false);
       nameTiles[i] = (currentName);
     }
     return nameTiles;

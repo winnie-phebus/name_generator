@@ -53,9 +53,16 @@ class _NameTileState extends State<NameTile> {
 
   void updateFavorites(bool favoriteStatus) {
     isFavorited = favoriteStatus;
+    String docId = currentUser.email + '_' + name;
     if (isFavorited) {
       try {
-        _firestore.collection('favorite_names').add({
+        /*_firestore.collection('favorite_names').add({
+          kFAVENAME: name,
+          kFAVEUSAGE: usage,
+          kFAVEGENDER: gender,
+          kFAVEUSER: currentUser.email
+        });*/
+        _firestore.collection('favorite_names').doc(docId).set({
           kFAVENAME: name,
           kFAVEUSAGE: usage,
           kFAVEGENDER: gender,
@@ -68,7 +75,6 @@ class _NameTileState extends State<NameTile> {
     } else {
       try {
         // TODO: find ID of document
-        String docId = null;
         _firestore.collection('favorite_names').doc(docId).delete();
       } catch (e) {
         isFavorited = true;
