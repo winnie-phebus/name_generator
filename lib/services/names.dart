@@ -3,6 +3,7 @@ import 'package:name_generator/components/name_tile.dart';
 import 'package:name_generator/resources/source.dart';
 import 'package:name_generator/services/networking.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 const btnApiKey = 'wi948351677';
 const JSONbtnUrl = 'https://www.behindthename.com/api/';
@@ -10,6 +11,7 @@ const JSONbtnUrl = 'https://www.behindthename.com/api/';
 class NameRetriever {
   User currentUser;
   final _auth = FirebaseAuth.instance;
+  final _firestore = FirebaseFirestore.instance;
 
   NameRetriever(this.currentUser);
 
@@ -60,7 +62,7 @@ class NameRetriever {
       for (int i = 1; i < cap; i++) {
         usages += ", " + nd[0]['usages'][i]['usage_full'];
       }
-      var gender = nd[0]["gender"];
+      gender = nd[0]["gender"];
     }
     //print(currentUser);
     currentUser = _auth.currentUser;
@@ -73,10 +75,29 @@ class NameRetriever {
     print(nameData);
     List<Widget> nameTiles = new List<Widget>(length);
     for (int i = 0; i < length; i++) {
+      String currname = nameData['names'][i];
+      bool isFavorite = await nameInFavorites(currname);
       NameTile currentName =
-          await nameTileBuilder(nameData['names'][i], nameOrigin, false);
+          await nameTileBuilder(currname, nameOrigin, isFavorite);
       nameTiles[i] = (currentName);
     }
     return nameTiles;
+  }
+
+  Future<bool> nameInFavorites(String name) async {
+    print('checking favorites for $name');
+    bool inFavorites = false;
+    try {
+      DocumentReference usersRef = _firestore
+          .collection('favorite_names')
+          .doc(currentUser.email + ' ' + name);
+
+      dynamic doc = await usersRef.get();
+      print(doc);
+      inFavorites = doc.exists;
+    } catch (e) {
+      print(e);
+    }
+    return inFavorites;
   }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:name_generator/components/name_tile.dart';
 import 'package:name_generator/resources/source.dart';
 
 // NAME + APP DATA

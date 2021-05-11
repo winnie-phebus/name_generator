@@ -19,7 +19,6 @@ import 'package:name_generator/services/usage_search.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-final _firestore = FirebaseFirestore.instance;
 User loggedInUser;
 NameRetriever nr;
 
