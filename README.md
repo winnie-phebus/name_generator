@@ -1,17 +1,17 @@
 # name_generator
 
-A simple application that allows for the generation of names, along with certain specifications.
+A simple application available for Android and IOS that allows for the generation of names, along with certain specifications.
 Uses API from Behind the Name.com, and can potentially use others.
 
-## Getting Started
+Features:
+- A robust name library provided by BehindTheName.com API including:
+-- Name filters like gender, source, and number (from 1 - 12)
+-- Over 100 name sources to filter from
 
-This project is a starting point for a Flutter application.
+- The ability to choose between themes
+- A favorite name system that allows for real time updates
+- Cross-platform access to favorites
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Wishlist:
+- Google Sign In + Account Sync
+- User created themes
