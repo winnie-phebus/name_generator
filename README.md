@@ -15,3 +15,4 @@ Features:
 Wishlist:
 - Google Sign In + Account Sync
 - User created themes
+- Delete Account
