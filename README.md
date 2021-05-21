@@ -5,8 +5,8 @@ Uses API from Behind the Name.com, and can potentially use others.
 
 Features:
 * A robust name library provided by BehindTheName.com API including:
-- Name filters like gender, source, and number (from 1 - 12)
-- Over 100 name sources to filter from
+    - Name filters like gender, source, and number (from 1 - 12)
+    - Over 100 name sources to filter from
 
 * The ability to choose between themes
 * A favorite name system that allows for real time updates
@@ -21,9 +21,9 @@ Wishlist:
 
 Resources:
 * DART:
-- https://www.geeksforgeeks.org/how-to-combine-lists-in-dart/
+    - https://www.geeksforgeeks.org/how-to-combine-lists-in-dart/
 
 * FLUTTER:
 
 * MARKDOWN:
-- https://commonmark.org/help/tutorial/index.html
+    - https://commonmark.org/help/tutorial/index.html
