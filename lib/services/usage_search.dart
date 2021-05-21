@@ -6,7 +6,7 @@ import '../resources/constants.dart';
 class UsageSearch extends SearchDelegate<Origin> {
   // Search Delegate is a built in Flutter library / class
   // Credit towards MTECHVIRAL for majority of the basic use of this class.
-  List<Origin> nameSources = allNameSources;
+  List<Origin> nameSources = all_origins;
 
   List<Origin> recents = [];
   List<Origin> favorites = [];
@@ -62,7 +62,7 @@ class UsageSearch extends SearchDelegate<Origin> {
   Widget buildSuggestions(BuildContext context) {
     final suggestionList = query.isEmpty
         ? Origin.sourceConverter(recents)
-        : Origin.sourceConverter(allNameSources)
+        : Origin.sourceConverter(all_origins)
             .where((element) =>
                 element.toLowerCase().startsWith(query.toLowerCase()))
             .toList();

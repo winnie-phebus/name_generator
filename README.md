@@ -16,3 +16,11 @@ Wishlist:
 - Google Sign In + Account Sync
 - User created themes
 - Delete Account
+- Sort and search Name source by tag
+-- Extened notes + information for each source as available
+
+Resources:
+- DART:
+-- https://www.geeksforgeeks.org/how-to-combine-lists-in-dart/
+
+- FLUTTER:
