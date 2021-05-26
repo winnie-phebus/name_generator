@@ -13,15 +13,18 @@ FEATURES:
 * Cross-platform access to favorites
 
 WISHLIST:
-* Google Sign In + Account Sync
-* User created themes
 * Delete Account
+* Google Sign In + Account Sync
+* User created themes + Dark Theme
 * Sort and search Name source by tag
 * Extended notes + information for each source as available
+* Other Databases and API
 
 RESOURCES:
 * PACKAGES:
     - PENDING
+        - https://pub.dev/packages/modal_progress_hud 
+        -
 
 * DART:
     - https://www.geeksforgeeks.org/how-to-combine-lists-in-dart/
