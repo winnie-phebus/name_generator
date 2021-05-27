@@ -24,6 +24,7 @@ class UsageSearch extends SearchDelegate<Origin> {
         icon: Icon(Icons.check),
         onPressed: () {
           Origin chosen = Origin.displayToSource(query);
+          print('$chosen' + ',' + query);
           if (chosen != null) {
             print('$query, ' + chosen.display);
             recents.add(chosen);
