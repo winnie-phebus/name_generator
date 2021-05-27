@@ -52,17 +52,19 @@ class NameRetriever {
 
   Future<NameTile> nameTileBuilder(
       String name, Origin nameOrigin, bool favorited) async {
-    String usages = nameOrigin.display;
+    String usages = '';
     String gender = 'mf';
     if (nameOrigin == null) {
       var nd = await lookupName(name);
-      print('$nd for $name');
+      //print('$nd for $name');
       usages = nd[0]['usages'][0]['usage_full'];
       int cap = nd[0]["usages"].length;
       for (int i = 1; i < cap; i++) {
         usages += ", " + nd[0]['usages'][i]['usage_full'];
       }
       gender = nd[0]["gender"];
+    } else {
+      usages = nameOrigin.display;
     }
     //print(currentUser);
     currentUser = _auth.currentUser;
@@ -76,7 +78,7 @@ class NameRetriever {
     List<Widget> nameTiles = new List<Widget>(length);
     for (int i = 0; i < length; i++) {
       String currname = nameData['names'][i];
-      bool isFavorite = await nameInFavorites(currname);
+      bool isFavorite = false; //await nameInFavorites(currname);
       NameTile currentName =
           await nameTileBuilder(currname, nameOrigin, isFavorite);
       nameTiles[i] = (currentName);

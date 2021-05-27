@@ -74,7 +74,6 @@ class _NameTileState extends State<NameTile> {
       }
     } else {
       try {
-        // TODO: find ID of document
         _firestore.collection('favorite_names').doc(docId).delete();
       } catch (e) {
         isFavorited = true;
@@ -90,59 +89,73 @@ class _NameTileState extends State<NameTile> {
   //TODO: make everything line up all nicely
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
     return Container(
       margin: EdgeInsets.symmetric(vertical: 5),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
+      //color: theme.buttonColor,
+      child: Column(
         children: [
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      name,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15.0,
+                    Row(
+                      children: [
+                        Text(
+                          name,
+                          style: TextStyle(
+                            color:
+                                kCopper, // #TODO: change this to coordinate w Theme
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15.0,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          '$gender.',
+                          style: TextStyle(
+                            color: kDarkPurple,
+                            fontSize: 9.0,
+                          ),
+                        )
+                      ],
+                    ),
+                    Container(
+                      width: 270,
+                      child: Text(
+                        '$usage',
+                        style: TextStyle(
+                          color: kDarkPurple,
+                          fontSize: 9.0,
+                        ),
                       ),
                     ),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Text(
-                      '$gender.',
-                      style: TextStyle(
-                        fontSize: 9.0,
-                      ),
-                    )
                   ],
                 ),
-                Container(
-                  width: 270,
-                  child: Text(
-                    '$usage',
-                    style: TextStyle(
-                      fontSize: 9.0,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              ),
+              IconButton(
+                icon: tileIcon(),
+                color: kCopper,
+                onPressed: () {
+                  setState(() {
+                    print(name);
+                    updateFavorites(!isFavorited);
+                  });
+                },
+              ),
+            ],
           ),
-          IconButton(
-            icon: tileIcon(),
-            color: kCopper,
-            onPressed: () {
-              setState(() {
-                print(name);
-                updateFavorites(!isFavorited);
-              });
-            },
-          ),
+          /*Divider(
+            thickness: 3,
+            color: theme.primaryColor,
+          ),*/
         ],
       ),
     );

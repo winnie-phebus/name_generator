@@ -16,6 +16,7 @@ WISHLIST:
 * Delete Account
 * Google Sign In + Account Sync
 * User created themes + Dark Theme
+    * might make my own Theme manager system, will take a while
 * Sort and search Name source by tag
 * Extended notes + information for each source as available
 * Other Databases and API

@@ -7,6 +7,13 @@ import 'package:name_generator/resources/constants.dart';
 class ErrorPopUp extends StatelessWidget {
   final String title;
   final String body;
+  void show(context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) => this,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return new AlertDialog(
