@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import 'package:name_generator/components/popup_dialog.dart';
+
 import 'package:name_generator/components/name_tile.dart';
 import 'package:name_generator/resources/constants.dart';
 
@@ -50,6 +52,7 @@ class FavoritesStream extends StatelessWidget {
           }
         } catch (e) {
           print(e);
+          ErrorPopUp('Favorites Error', e.toString()).show(context);
         }
         return Expanded(
           child: ListView(

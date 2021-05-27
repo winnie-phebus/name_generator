@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:name_generator/resources/source.dart';
 
 // NAME + APP DATA
-//TODO: finally decide on a name!
 const String app_name = 'Nameleon';
 
 // DOCUMENT FIELDS

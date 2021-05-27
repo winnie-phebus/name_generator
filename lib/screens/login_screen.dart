@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:name_generator/components/back_button.dart';
 import 'package:name_generator/components/password_textfield.dart';
 import 'package:name_generator/components/popup_dialog.dart';
 import 'package:name_generator/components/rounded_button.dart';
 import 'package:name_generator/resources/constants.dart';
 import 'package:name_generator/screens/generate_screen.dart';
 import 'package:name_generator/screens/settings_screen.dart';
+import 'package:name_generator/screens/user_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   static String id = 'login_screen';
@@ -16,7 +18,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _auth = FirebaseAuth.instance;
-  String targetScreen = GenerateScreen.id;
+  String targetScreen = UserScreen.id;
 
   bool showSpinner = false;
   String email;
@@ -61,19 +63,6 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
     return Scaffold(
-      /*appBar: AppBar(
-        title: Center(
-          child: Text("Log In to $app_name"),
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.settings),
-            onPressed: () {
-              Navigator.pushNamed(context, SettingsScreen.id);
-            },
-          ),
-        ],
-      ),*/
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Column(
@@ -128,13 +117,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        IconButton(
-                          icon: Icon(Icons.arrow_back),
-                          color: theme.accentColor,
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                        ),
+                        BackArrowButton(),
                         RoundedButton(
                             color: theme.buttonColor,
                             title: 'Log In',

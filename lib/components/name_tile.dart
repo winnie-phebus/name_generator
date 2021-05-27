@@ -86,7 +86,6 @@ class _NameTileState extends State<NameTile> {
     return (isFavorited) ? Icon(Icons.star) : Icon(Icons.star_border);
   }
 
-  //TODO: make everything line up all nicely
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
