@@ -37,6 +37,9 @@ RESOURCES:
 * DART:
     - https://www.geeksforgeeks.org/how-to-combine-lists-in-dart/
 
+* FIREBASE:
+    - https://stackoverflow.com/questions/62978360/how-do-i-iterate-through-all-documents-in-collection-to-show-content-in-listview
+    
 * FLUTTER:
     - https://api.flutter.dev/index.html
 

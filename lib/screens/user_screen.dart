@@ -46,14 +46,14 @@ class _UserScreenState extends State<UserScreen> {
     }
   }
 
-  void favoritesStream() async {
+  /*void favoritesStream() async {
     await for (var snapshot
         in _firestore.collection('favorite_names').snapshots()) {
       for (var favorite in snapshot.docs) {
         print(favorite.data);
       }
     }
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {

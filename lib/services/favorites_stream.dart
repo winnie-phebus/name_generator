@@ -15,10 +15,21 @@ class FavoritesStream extends StatelessWidget {
 
   FavoritesStream(this.loggedInUser);
 
+  // https://stackoverflow.com/questions/62978360/how-do-i-iterate-through-all-documents-in-collection-to-show-content-in-listview
+  void _myListSnapshot(QuerySnapshot snapshot) {
+    snapshot.docs.map((doc) {
+      doc.data()[kFAVENAME];
+    });
+  }
+
+  void clearFavorites() {
+    var currFavorites = userFavorites().map(_myListSnapshot);
+  }
+
   Stream<QuerySnapshot> userFavorites() {
     return favorites
         .where(kFAVEUSER, isEqualTo: loggedInUser.email)
-        .snapshots(); //where(kFAVEUSER, loggedInUser.email).get();
+        .snapshots();
   }
 
   @override

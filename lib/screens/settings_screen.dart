@@ -4,8 +4,10 @@ import 'package:name_generator/components/popup_dialog.dart';
 import 'package:name_generator/components/rounded_button.dart';
 import 'package:name_generator/resources/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:name_generator/screens/welcome_screen.dart';
+import 'package:name_generator/services/favorites_stream.dart';
 
 class SettingsScreen extends StatefulWidget {
   static String id = 'settings_screen';
@@ -30,10 +32,20 @@ class _SettingsScreenState extends State<SettingsScreen> {
         () {
       confirmed = true;
       print('delete!, $confirmed');
+      FavoritesStream(user).clearFavorites();
+      /*Stream<QuerySnapshot> userFavorites =
+          FavoritesStream(user).userFavorites();
+      var favorites = snapshot.data.documents;*/
+      /*for (var fav in userFavorites) {
+        print(fav.data);
+      }*/
+      //user.delete();
+      //Navigator.pushNamed(context, WelcomeScreen.id);
     }).show(context);
-    if (confirmed) {
+    //print('confirmed = $confirmed');
+    /* if (confirmed == true) {
       print('Now switch');
-    }
+    } */
     setState(() {
       // Navigator.pushNamed(context, WelcomeScreen.id);
     });

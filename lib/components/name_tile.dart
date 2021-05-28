@@ -56,12 +56,6 @@ class _NameTileState extends State<NameTile> {
     String docId = currentUser.email + '_' + name;
     if (isFavorited) {
       try {
-        /*_firestore.collection('favorite_names').add({
-          kFAVENAME: name,
-          kFAVEUSAGE: usage,
-          kFAVEGENDER: gender,
-          kFAVEUSER: currentUser.email
-        });*/
         _firestore.collection('favorite_names').doc(docId).set({
           kFAVENAME: name,
           kFAVEUSAGE: usage,
