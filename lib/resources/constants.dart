@@ -81,7 +81,84 @@ const List<Origin> tag_ancient = [
 ];
 /////// CONTINENTS
 // --------------------- AFRICA
-const List<Origin> tag_africa = [];
+const Origin afrikaans = const Origin('Afrikaans', 'afk', 'btn');
+const Origin african = const Origin('African', 'afr', 'btn');
+const Origin akan = const Origin('Akan', 'aka', 'btn');
+const Origin amharic = const Origin('Amharic', 'amh', 'btn');
+
+const Origin berber = const Origin('Berber', 'ber', 'btn');
+const Origin chewa = const Origin('Chewa', 'cew', 'btn');
+const Origin coptic = const Origin('Coptic', 'cop', 'btn');
+
+const Origin ethiopian = const Origin('Ethiopian', 'eth', 'btn');
+const Origin ewe = const Origin('Ewe', 'ewe', 'btn');
+const Origin fula = const Origin('Fula', 'ful', 'btn');
+
+const Origin ganda = const Origin('Ganda', 'gan', 'btn');
+const Origin hausa = const Origin('Hausa', 'hau', 'btn');
+const Origin ibibio = const Origin('Ibibio', 'ibi', 'btn');
+const Origin igbo = const Origin('Igbo', 'igb', 'btn');
+
+const Origin kiga = const Origin('Kiga', 'kig', 'btn');
+const Origin kikuyu = const Origin('Kikuyu', 'kik', 'btn');
+const Origin luhya = const Origin('Luhya', 'luh', 'btn');
+const Origin luo = const Origin('Luo', 'luo', 'btn');
+
+const Origin mbundu = const Origin('Mbundu', 'mbu', 'btn');
+const Origin mwera = const Origin('Mwera', 'mwe', 'btn');
+const Origin ndebele = const Origin('Ndebele', 'nde', 'btn');
+const Origin oromo = const Origin('Oromo', 'oro', 'btn');
+
+const Origin shona = const Origin('Shona', 'sho', 'btn');
+const Origin somali = const Origin('Somali', 'som', 'btn');
+const Origin sotho = const Origin('Sotho', 'sot', 'btn');
+const Origin swazi = const Origin('Swazi', 'swz', 'btn');
+
+const Origin tooro = const Origin('Tooro', 'too', 'btn');
+const Origin tswana = const Origin('Tswana', 'tsw', 'btn');
+const Origin tumbuku = const Origin('Tumbuku', 'tum', 'btn');
+const Origin urhobo = const Origin('Urhobo', 'urh', 'btn');
+
+const Origin xhosa = const Origin('Xhosa', 'xho', 'btn');
+const Origin yao = const Origin('Yao', 'yao', 'btn');
+const Origin yoruba = const Origin('Yoruba', 'yor', 'btn');
+const Origin zulu = const Origin('Zulu', 'zul', 'btn');
+
+const List<Origin> tag_africa = [
+  afrikaans,
+  african,
+  akan,
+  amharic,
+  berber,
+  chewa,
+  coptic,
+  ethiopian,
+  ewe,
+  fula,
+  ganda,
+  hausa,
+  ibibio,
+  kiga,
+  kikuyu,
+  luhya,
+  luo,
+  mbundu,
+  mwera,
+  ndebele,
+  oromo,
+  shona,
+  somali,
+  sotho,
+  swazi,
+  tooro,
+  tswana,
+  tumbuku,
+  urhobo,
+  xhosa,
+  yao,
+  yoruba,
+  zulu
+];
 
 // --------------------- ASIA
 const List<Origin> tag_asia = [];
@@ -137,7 +214,47 @@ const List<Origin> tag_south_america = [mapuche, quechua, tupi];
 ////// CONTINENTS
 
 // --------------------- LANGUAGE
-const List<Origin> tag_languages = [];
+const Origin catalan = const Origin('Catalan', 'cat', 'btn');
+const Origin english = const Origin('English', 'eng', 'btn');
+const Origin esperanto = const Origin('Esperanto', 'esp', 'btn');
+const Origin french = const Origin('French', 'fre', 'btn');
+const Origin german = const Origin('German', 'ger', 'btn');
+const Origin greek = const Origin('Greek', 'gre', 'btn');
+
+const Origin hebrew = const Origin('Hebrew', 'heb', 'btn');
+const Origin hindi = const Origin('Hindi', 'hin', 'btn');
+const Origin italian = const Origin('Italian', 'ita', 'btn');
+const Origin low_german = const Origin('Low German', 'sax', 'btn');
+const Origin occitan = const Origin('Occitan', 'occ', 'btn');
+const Origin picard = const Origin('Picard', 'pcd', 'btn');
+
+const Origin portugeuese = const Origin('Portugeuese', 'por', 'btn');
+const Origin scots = const Origin('Scots', 'sct', 'btn');
+const Origin sicilian = const Origin('Sicilian', 'sic', 'btn');
+const Origin sorbian = const Origin('Sorbian', 'sor', 'btn');
+const Origin spanish = const Origin('Spanish', 'spa', 'btn');
+const Origin swahili = const Origin('Swahili', 'swa', 'btn');
+
+const List<Origin> tag_languages = [
+  catalan,
+  english,
+  esperanto,
+  french,
+  german,
+  greek,
+  hebrew,
+  hindi,
+  italian,
+  low_german,
+  occitan,
+  picard,
+  portugeuese,
+  scots,
+  sicilian,
+  sorbian,
+  spanish,
+  swahili,
+];
 
 // --------------------- FUN
 const Origin astronomy = const Origin('Astronomy', 'astr', 'btn');
