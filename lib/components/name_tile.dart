@@ -103,7 +103,7 @@ class _NameTileState extends State<NameTile> {
                           name,
                           style: TextStyle(
                             color:
-                                kCopper, // #TODO: change this to coordinate w Theme
+                                kCopper, // #TODO: [THEME] change this in the overhaul
                             fontWeight: FontWeight.bold,
                             fontSize: 15.0,
                           ),

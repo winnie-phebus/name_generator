@@ -39,8 +39,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
       /*for (var fav in userFavorites) {
         print(fav.data);
       }*/
-      //user.delete();
-      //Navigator.pushNamed(context, WelcomeScreen.id);
+      user.delete();
+      Navigator.pushNamed(context, WelcomeScreen.id);
     }).show(context);
     //print('confirmed = $confirmed');
     /* if (confirmed == true) {
@@ -57,12 +57,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
     Color divColor = theme.accentColor;
     double divSize = 3;
+    String acctEmail;
 
-    String acctEmail = user.email;
+    try {
+      acctEmail = user.email;
+    } catch (e) {
+      acctEmail = 'Anonymous!';
+    }
+
     return Scaffold(
-      /*appBar: AppBar(
-        title: Text(app_name),
-      ),*/
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

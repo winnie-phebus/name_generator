@@ -88,53 +88,49 @@ class _LoginScreenState extends State<LoginScreen> {
                 ],
               ),
             ),
-            ModalProgressHUD(
-              inAsyncCall: showSpinner,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  // crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    TextField(
-                      keyboardType: TextInputType.emailAddress,
-                      textAlign: TextAlign.right,
-                      onChanged: (value) {
-                        email = value;
-                      },
-                      decoration: kTextFieldDecoration.copyWith(
-                          //prefixText: 'Email:',
-                          prefixIcon: Icon(Icons.mail_outline),
-                          hintText: 'email, please'.toUpperCase()),
-                    ),
-                    SizedBox(
-                      height: 8.0,
-                    ),
-                    PassTextField(
-                      'password, please',
-                      onChanged: ((String value) => (password = value)),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        BackArrowButton(),
-                        RoundedButton(
-                            color: theme.buttonColor,
-                            title: 'Log In',
-                            onPressed: () {
-                              loginPress();
-                            }),
-                        IconButton(
-                          color: theme.accentColor,
-                          icon: Icon(Icons.settings),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  TextField(
+                    keyboardType: TextInputType.emailAddress,
+                    textAlign: TextAlign.right,
+                    onChanged: (value) {
+                      email = value;
+                    },
+                    decoration: kTextFieldDecoration.copyWith(
+                        //prefixText: 'Email:',
+                        prefixIcon: Icon(Icons.mail_outline),
+                        hintText: 'email, please'.toUpperCase()),
+                  ),
+                  SizedBox(
+                    height: 8.0,
+                  ),
+                  PassTextField(
+                    'password, please',
+                    onChanged: ((String value) => (password = value)),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      BackArrowButton(),
+                      RoundedButton(
+                          color: theme.buttonColor,
+                          title: 'Log In',
                           onPressed: () {
-                            Navigator.pushNamed(context, SettingsScreen.id);
-                          },
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                            loginPress();
+                          }),
+                      IconButton(
+                        color: theme.accentColor,
+                        icon: Icon(Icons.settings),
+                        onPressed: () {
+                          Navigator.pushNamed(context, SettingsScreen.id);
+                        },
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ],

@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:expandable/expandable.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:name_generator/components/popup_dialog.dart';
-import 'package:name_generator/components/rounded_button.dart';
 
 import 'package:name_generator/resources/constants.dart';
 import 'package:name_generator/resources/enums.dart';
@@ -17,7 +16,6 @@ import 'package:name_generator/screens/user_screen.dart';
 import 'package:name_generator/services/names.dart';
 import 'package:name_generator/services/usage_search.dart';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 User loggedInUser;
@@ -37,7 +35,18 @@ class _GenerateScreenState extends State<GenerateScreen> {
   User currentUser = loggedInUser;
 
   String names = '';
-  List<Widget> nameTiles = [Text('No Names Yet.')];
+  List<Widget> nameTiles = [
+    Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Text(
+        'No Names Yet. \nPress GO to get started!'.toUpperCase(),
+        style: TextStyle(
+          color: kSandyBrown, //TODO: [THEME] update in the overhaul
+          letterSpacing: 2,
+        ),
+      ),
+    )
+  ];
   List<String> lastNames = [];
 
   Gender gender = Gender.either;
@@ -197,18 +206,18 @@ class _GenerateScreenState extends State<GenerateScreen> {
     });
   }
 
-  Future<dynamic> _lastName() async {
+  /*Future<dynamic> _lastName() async {
     var ln = await nr.getLastName('fre');
     String lastName = ln['names'][1];
     print(lastName);
     return lastName;
-  }
+  }*/
 
-  Future<dynamic> _lastNames() async {
+  /*Future<dynamic> _lastNames() async {
     for (int i = 0; i < nameCount - 1; i++) {
       lastNames.add(await _lastName());
     }
-  }
+  }*/
 
   @override
   void initState() {

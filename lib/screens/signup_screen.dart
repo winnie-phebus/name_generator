@@ -93,57 +93,53 @@ class _SignupScreenState extends State<SignupScreen> {
               ],
             ),
           ),
-          ModalProgressHUD(
-            inAsyncCall: showSpinner,
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  TextField(
-                    keyboardType: TextInputType.emailAddress,
-                    textAlign: TextAlign.right,
-                    onChanged: (value) {
-                      email = value;
-                    },
-                    decoration: kTextFieldDecoration.copyWith(
-                        //prefixText: 'Email:',
-                        prefixIcon: Icon(Icons.mail_outline),
-                        hintText: 'desired email, please'.toUpperCase()),
-                  ),
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                  PassTextField('password, please',
-                      onChanged: ((String value) => (password_first = value))),
-                  SizedBox(
-                    height: 8.0,
-                  ),
-                  PassTextField('confirm password',
-                      onChanged: ((String value) =>
-                          (password_confirm = value))),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      BackArrowButton(),
-                      RoundedButton(
-                          title: 'Register',
-                          color: theme.buttonColor,
-                          onPressed: () async {
-                            registerPress();
-                          }),
-                      IconButton(
-                        color: theme.accentColor,
-                        icon: Icon(Icons.settings),
-                        onPressed: () {
-                          Navigator.pushNamed(context, SettingsScreen.id);
-                        },
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                TextField(
+                  keyboardType: TextInputType.emailAddress,
+                  textAlign: TextAlign.right,
+                  onChanged: (value) {
+                    email = value;
+                  },
+                  decoration: kTextFieldDecoration.copyWith(
+                      //prefixText: 'Email:',
+                      prefixIcon: Icon(Icons.mail_outline),
+                      hintText: 'desired email, please'.toUpperCase()),
+                ),
+                SizedBox(
+                  height: 10.0,
+                ),
+                PassTextField('password, please',
+                    onChanged: ((String value) => (password_first = value))),
+                SizedBox(
+                  height: 8.0,
+                ),
+                PassTextField('confirm password',
+                    onChanged: ((String value) => (password_confirm = value))),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    BackArrowButton(),
+                    RoundedButton(
+                        title: 'Register',
+                        color: theme.buttonColor,
+                        onPressed: () async {
+                          registerPress();
+                        }),
+                    IconButton(
+                      color: theme.accentColor,
+                      icon: Icon(Icons.settings),
+                      onPressed: () {
+                        Navigator.pushNamed(context, SettingsScreen.id);
+                      },
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
         ],

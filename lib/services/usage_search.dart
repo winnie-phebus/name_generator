@@ -31,7 +31,7 @@ class UsageSearch extends SearchDelegate<Origin> {
             close(context, chosen);
           } else {
             print('$query');
-            //TODO: account for user press 'enter'
+            //TODO: [UPGRADE] account for user press 'enter'
             showResults(context);
           }
         },
@@ -41,7 +41,6 @@ class UsageSearch extends SearchDelegate<Origin> {
 
   @override
   Widget buildLeading(BuildContext context) {
-    // TODO: implement buildLeading
     return IconButton(
       icon: AnimatedIcon(
         icon: AnimatedIcons.menu_arrow,
@@ -62,7 +61,7 @@ class UsageSearch extends SearchDelegate<Origin> {
   @override
   Widget buildSuggestions(BuildContext context) {
     final suggestionList = query.isEmpty
-        ? Origin.sourceConverter(recents)
+        ? Origin.sourceConverter(all_origins)
         : Origin.sourceConverter(all_origins)
             .where((element) =>
                 element.toLowerCase().startsWith(query.toLowerCase()))

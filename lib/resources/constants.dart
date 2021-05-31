@@ -25,7 +25,8 @@ const Color kCopper = Color(0xFFC47335);
 
 InputDecoration kTextFieldDecoration = InputDecoration(
   hintText: '',
-  hintStyle: TextStyle(color: kCopper), //TODO: sort out the great theme mystery
+  hintStyle: TextStyle(
+      color: kCopper), //TODO: [THEME] sort out the great theme mystery
 
   prefixStyle: TextStyle(color: kMiddleBluePurple),
   contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
@@ -58,10 +59,6 @@ const ColorScheme kdefaultScheme = ColorScheme(
     secondary: kSandyBrown,
     primary: kMiddleBluePurple);
 
-// Example NameTile
-//var kWinn =
-//NameTile('Winnie', 'English', 'Female', 'doronelle7@gmail.com', false);
-
 // USAGE SOURCES
 // --------------------- ANCIENT
 const Origin defaultSource = const Origin('Default', '', 'btn');
@@ -79,6 +76,7 @@ const List<Origin> tag_ancient = [
   ancientRoman,
   ancientScandi
 ];
+
 /////// CONTINENTS
 // --------------------- AFRICA
 const Origin afrikaans = const Origin('Afrikaans', 'afk', 'btn');
