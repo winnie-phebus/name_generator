@@ -191,7 +191,125 @@ const Origin turkish = const Origin('Turkish', 'tur', 'btn');
 const List<Origin> tag_eurasia = [kazakh, kyrgyz, turkish];
 
 // --------------------- EUROPE
-const List<Origin> tag_europe = [];
+const Origin albanian = const Origin('Albanian', 'alb', 'btn');
+const Origin asturian = const Origin('Asturian', 'ast', 'btn');
+const Origin avar = const Origin('Avar', 'ava', 'btn');
+const Origin aymara = const Origin('Aymara', 'aym', 'btn');
+const Origin azerbaijani = const Origin('Azerbaijani', 'aze', 'btn');
+const Origin bashkir = const Origin('Bashkir', 'bsh', 'btn');
+
+const Origin basque = const Origin('Basque', 'bas', 'btn');
+const Origin belarusian = const Origin('Belarusian', 'bel', 'btn');
+const Origin bosnian = const Origin('Bosnian', 'bos', 'btn');
+const Origin breton = const Origin('Breton', 'bre', 'btn');
+const Origin bulgarian = const Origin('Bulgarian', 'bul', 'btn');
+const Origin chechen = const Origin('Chechen', 'che', 'btn');
+
+const Origin circassian = const Origin('Circassian', 'cir', 'btn');
+const Origin cornish = const Origin('Cornish', 'cor', 'btn');
+const Origin croatia = const Origin('Croatia', 'cro', 'btn');
+const Origin corsican = const Origin('Corsican', 'crs', 'btn');
+const Origin czech = const Origin('Czech', 'cze', 'btn');
+const Origin danish = const Origin('Danish', 'dan', 'btn');
+
+const Origin dutch = const Origin('Dutch', 'dut', 'btn');
+const Origin estonian = const Origin('Estonian', 'est', 'btn');
+const Origin faroese = const Origin('Faroese', 'fae', 'btn');
+const Origin finnish = const Origin('Finnish', 'fin', 'btn');
+const Origin flemish = const Origin('Flemish', 'fle', 'btn');
+const Origin frisian = const Origin('Frisian', 'fri', 'btn');
+
+const Origin galician = const Origin('Galician', 'gal', 'btn');
+const Origin georgia = const Origin('Georgia', 'geo', 'btn');
+const Origin hungarian = const Origin('Hungarian', 'hun', 'btn');
+const Origin icelandic = const Origin('Icelandic', 'ice', 'btn');
+const Origin ingush = const Origin('Ingush', 'ing', 'btn');
+const Origin irish = const Origin('Irish', 'iri', 'btn');
+
+const Origin jerrais = const Origin('Jerrais', 'jer', 'btn');
+const Origin latvian = const Origin('Latvian', 'lat', 'btn');
+const Origin limburgish = const Origin('Limburgish', 'lim', 'btn');
+const Origin lithuania = const Origin('Lithuania', 'lth', 'btn');
+const Origin macedonia = const Origin('Macedonia', 'mac', 'btn');
+const Origin maltese = const Origin('Maltese', 'mal', 'btn');
+
+const Origin manx = const Origin('Manx', 'man', 'btn');
+const Origin norwegian = const Origin('Norwegian', 'nor', 'btn');
+const Origin norman = const Origin('Norman', 'nrm', 'btn');
+const Origin ossetian = const Origin('Ossetian', 'oss', 'btn');
+const Origin polish = const Origin('Polish', 'pol', 'btn');
+const Origin romanian = const Origin('Romanian', 'rmn', 'btn');
+
+const Origin russian = const Origin('Russian', 'rus', 'btn');
+const Origin sami = const Origin('Sami', 'sam', 'btn');
+const Origin sardinian = const Origin('Sardinian', 'sar', 'btn');
+const Origin scottish = const Origin('Scottish', 'sco', 'btn');
+const Origin serbian = const Origin('Serbian', 'ser', 'btn');
+const Origin slavic = const Origin('Slavic', 'sla', 'btn');
+
+const Origin slovak = const Origin('Slovak', 'slk', 'btn');
+const Origin slovene = const Origin('Slovene', 'sln', 'btn');
+const Origin swedish = const Origin('Swedish', 'swe', 'btn');
+const Origin tatar = const Origin('Tatar', 'tat', 'btn');
+const Origin ukraine = const Origin('Ukraine', 'ukr', 'btn');
+const Origin welsh = const Origin('Welsh', 'wel', 'btn');
+
+const List<Origin> tag_europe = [
+  albanian,
+  asturian,
+  avar,
+  aymara,
+  azerbaijani,
+  basque,
+  bashkir,
+  belarusian,
+  bosnian,
+  breton,
+  bulgarian,
+  chechen,
+  circassian,
+  cornish,
+  croatia,
+  corsican,
+  czech,
+  danish,
+  dutch,
+  estonian,
+  faroese,
+  finnish,
+  flemish,
+  frisian,
+  galician,
+  georgia,
+  hungarian,
+  icelandic,
+  ingush,
+  irish,
+  jerrais,
+  latvian,
+  limburgish,
+  lithuania,
+  macedonia,
+  maltese,
+  manx,
+  norwegian,
+  norman,
+  ossetian,
+  polish,
+  romanian,
+  russian,
+  sami,
+  sardinian,
+  scottish,
+  serbian,
+  slavic,
+  slovak,
+  slovene,
+  swedish,
+  tatar,
+  ukraine,
+  welsh
+];
 
 // --------------------- MIDDLE EAST
 const Origin arabic = const Origin('Arabic', 'ara', 'btn');
@@ -202,7 +320,59 @@ const Origin pashto = const Origin('Pashto', 'kaz', 'btn');
 const List<Origin> tag_middle_east = [arabic, jewish, kurdish, pashto];
 
 // --------------------- NORTH AMERICA
-const List<Origin> tag_north_america = [];
+const Origin algonquin = const Origin('Algonquin', 'alg', 'btn');
+const Origin indigenuous_american =
+    const Origin('Indigenuous American', 'ame', 'btn');
+const Origin american = const Origin('American', 'usa', 'btn');
+const Origin apache = const Origin('Apache', 'apa', 'btn');
+const Origin cherokee = const Origin('Cherokee', 'chk', 'btn');
+const Origin choctaw = const Origin('Choctaw', 'cht', 'btn');
+
+const Origin comanche = const Origin('Comanche', 'com', 'btn');
+const Origin cree = const Origin('Cree', 'cre', 'btn');
+const Origin greenlandic = const Origin('Greenlandic', 'grn', 'btn');
+const Origin hawaiian = const Origin('Hawaiian', 'haw', 'btn');
+const Origin inuit = const Origin('Inuit', 'inu', 'btn');
+const Origin iroquois = const Origin('Iroquois', 'iro', 'btn');
+
+const Origin mayan = const Origin('Mayan', 'may', 'btn');
+const Origin mohawk = const Origin('Mohawk', 'moh', 'btn');
+const Origin nahuatl = const Origin('Nahuatl', 'nah', 'btn');
+const Origin navajo = const Origin('Navajo', 'nav', 'btn');
+const Origin ojibwe = const Origin('Ojibwe', 'oji', 'btn');
+const Origin oneida = const Origin('Oneida', 'one', 'btn');
+
+const Origin nuu_chah_nulth = const Origin('Nuu-chah-nulth', 'nuu', 'btn');
+const Origin powhatan = const Origin('Powhatan', 'pow', 'btn');
+const Origin shawnee = const Origin('Shawnee', 'sha', 'btn');
+const Origin sioux = const Origin('Sioux', 'sio', 'btn');
+const Origin zapotec = const Origin('Zapotec', 'zap', 'btn');
+
+const List<Origin> tag_north_america = [
+  algonquin,
+  indigenuous_american,
+  american,
+  apache,
+  cherokee,
+  choctaw,
+  comanche,
+  cree,
+  greenlandic,
+  hawaiian,
+  inuit,
+  iroquois,
+  mayan,
+  mohawk,
+  nahuatl,
+  navajo,
+  ojibwe,
+  oneida,
+  nuu_chah_nulth,
+  powhatan,
+  shawnee,
+  sioux,
+  zapotec
+];
 
 // --------------------- SOUTH AMERICA
 const Origin mapuche = const Origin('Mapuche', 'map', 'btn');
