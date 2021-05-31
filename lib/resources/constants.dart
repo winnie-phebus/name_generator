@@ -161,7 +161,91 @@ const List<Origin> tag_africa = [
 ];
 
 // --------------------- ASIA
-const List<Origin> tag_asia = [];
+const Origin armenian = const Origin('Armenian', 'arm', 'btn');
+const Origin assam = const Origin('Assam', 'asm', 'btn');
+const Origin balinese = const Origin('Balinese', 'bal', 'btn');
+const Origin bengali = const Origin('Bengali', 'ben', 'btn');
+const Origin bhutanese = const Origin('Bhutanese', 'bhu', 'btn');
+const Origin burmese = const Origin('Burmese', 'bur', 'btn');
+
+const Origin chinese = const Origin('Chinese', 'chi', 'btn');
+const Origin dhivehi = const Origin('Dhivehi', 'dhi', 'btn');
+const Origin filipino = const Origin('Filipino', 'fil', 'btn');
+const Origin gujarati = const Origin('Gujarati', 'guj', 'btn');
+const Origin hmong = const Origin('Hmong', 'hmo', 'btn');
+const Origin indian = const Origin('Indian', 'ind', 'btn');
+
+const Origin indonesian = const Origin('Indonesian', 'ins', 'btn');
+const Origin japanese = const Origin('Japanese', 'jap', 'btn');
+const Origin javanese = const Origin('Javanese', 'jav', 'btn');
+const Origin kannada = const Origin('Kannada', 'kan', 'btn');
+const Origin khmer = const Origin('Khmer', 'khm', 'btn');
+const Origin korean = const Origin('Korean', 'kor', 'btn');
+
+const Origin lao = const Origin('Lao', 'lao', 'btn');
+const Origin malayalam = const Origin('Malayalam', 'mlm', 'btn');
+const Origin malay = const Origin('Malay', 'mly', 'btn');
+const Origin mongolian = const Origin('Mongolian', 'mon', 'btn');
+const Origin marathi = const Origin('Marathi', 'mrt', 'btn');
+const Origin nepali = const Origin('Nepali', 'nep', 'btn');
+
+const Origin odia = const Origin('Odia', 'odi', 'btn');
+const Origin persian = const Origin('Persian', 'per', 'btn');
+const Origin punjabi = const Origin('Punjabi', 'pun', 'btn');
+const Origin tagalog = const Origin('Tagalog', 'tag', 'btn');
+const Origin tajik = const Origin('Tajik', 'taj', 'btn');
+const Origin tamil = const Origin('Tamil', 'tam', 'btn');
+
+const Origin telugu = const Origin('Telugu', 'tel', 'btn');
+const Origin thai = const Origin('Thai', 'tha', 'btn');
+const Origin tibetan = const Origin('Tibetan', 'tib', 'btn');
+const Origin turkmen = const Origin('Turkmen', 'tkm', 'btn');
+const Origin urdu = const Origin('Urdu', 'urd', 'btn');
+const Origin uyghur = const Origin('Uyghur', 'uyg', 'btn');
+
+const Origin uzbek = const Origin('Uzbek', 'uzb', 'btn');
+const Origin vietnamese = const Origin('Vietnamese', 'vie', 'btn');
+
+const List<Origin> tag_asia = [
+  armenian,
+  assam,
+  balinese,
+  bengali,
+  bhutanese,
+  burmese,
+  chinese,
+  dhivehi,
+  filipino,
+  gujarati,
+  hmong,
+  indian,
+  indonesian,
+  japanese,
+  javanese,
+  kannada,
+  khmer,
+  korean,
+  lao,
+  malayalam,
+  malay,
+  mongolian,
+  marathi,
+  nepali,
+  odia,
+  persian,
+  punjabi,
+  tagalog,
+  tajik,
+  tamil,
+  telugu,
+  thai,
+  tibetan,
+  turkmen,
+  urdu,
+  uyghur,
+  uzbek,
+  vietnamese
+];
 
 // --------------------- AUSTRALIA + OCEANIA
 const Origin indigenous_australian =
