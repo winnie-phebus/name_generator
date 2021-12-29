@@ -23,6 +23,7 @@ class FavoritesStream extends StatelessWidget {
   }
 
   void clearFavorites() {
+    // TODO: actually delete them whoops, want to be effective with our space
     var currFavorites = userFavorites().map(_myListSnapshot);
   }
 

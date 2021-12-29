@@ -20,6 +20,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   final user = FirebaseAuth.instance.currentUser;
 
   void logout() {
+    // TODO: Actually log out haha
     setState(() {
       Navigator.pushNamed(context, WelcomeScreen.id);
     });
