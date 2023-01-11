@@ -43,9 +43,9 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 
 # these are for the integration testing directory
-  integration_test: ^1.0.0
-  flutter_driver:
-    sdk: flutter
+#  integration_test: ^1.0.0
+#  flutter_driver:
+#    sdk: flutter
 
 # The following section is specific to Flutter.
 flutter:
