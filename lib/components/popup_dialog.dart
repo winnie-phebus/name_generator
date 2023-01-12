@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:name_generator/resources/constants.dart';
+// import 'package:name_generator/resources/constants.dart';
 
 // based off of the tutorial found:
 // https://dev.to/fluttercorner/how-to-create-popup-in-flutter-popup-menu-example-fluttercorner-com-373e
@@ -26,13 +25,13 @@ class ErrorPopUp extends StatelessWidget {
         ],
       ),
       actions: <Widget>[
-        new FlatButton(
+        /* new FlatButton(
           onPressed: () {
             Navigator.of(context).pop();
           },
           textColor: Theme.of(context).primaryColor,
           child: const Icon(Icons.close),
-        ),
+        ),*/
       ],
     );
   }
@@ -64,7 +63,7 @@ class ConfirmationPopUp extends StatelessWidget {
         ],
       ),
       actions: <Widget>[
-        new FlatButton(
+        /* new FlatButton(
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -79,7 +78,7 @@ class ConfirmationPopUp extends StatelessWidget {
             Navigator.of(context).pop();
           },
           textColor: Theme.of(context).primaryColor,
-        )
+        )*/
       ],
     );
   }
